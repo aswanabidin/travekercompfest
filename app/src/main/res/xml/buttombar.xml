@@ -1,0 +1,34 @@
+<Tab>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_homes"
+        activeColor="@color/colorPrimary"
+        titleSize="6dp"
+        title="Home"
+        />
+
+    <tab
+        id="@+id/tab_mybooking"
+        icon="@drawable/ic_mybookings"
+        activeColor="@color/colorPrimary"
+        titleSize="6dp"
+        title="Home"
+        />
+
+    <tab
+        id="@+id/tab_notification"
+        icon="@drawable/ic_notifications"
+        activeColor="@color/colorPrimary"
+        titleSize="6dp"
+        title="Home"
+        />
+
+    <tab
+        id="@+id/tab_account"
+        icon="@drawable/ic_users"
+        activeColor="@color/colorPrimary"
+        titleSize="6dp"
+        title="Home"
+        />
+
+</Tab>
