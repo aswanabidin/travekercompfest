@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context="com.example.aswanabidin.traveker.HalamanHome">
 
+
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -28,6 +30,7 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -42,6 +45,8 @@
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" />
+
+
 
 
 </LinearLayout>

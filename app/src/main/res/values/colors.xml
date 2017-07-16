@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorGreen">#429F46</color>
+    <color name="colorGrey">#EDEDED</color>
+    <color name="btnHomeColor">#D8D8D8</color>
+
 </resources>

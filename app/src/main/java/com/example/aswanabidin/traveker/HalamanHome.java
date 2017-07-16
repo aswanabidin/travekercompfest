@@ -76,10 +76,6 @@ public class HalamanHome extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         logo = (ImageView) toolbar.findViewById(R.id.logotravekerwidth);
 
-
-
-
-//        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

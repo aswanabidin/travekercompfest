@@ -6,26 +6,46 @@
     tools:context="com.example.aswanabidin.traveker.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:id="@+id/row0"
+    <RelativeLayout
+        android:id="@+id/layout_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:scaleType="centerCrop"
-            android:src="@drawable/japan" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <com.example.aswanabidin.traveker.Sliders.SliderView
+                android:id="@+id/sliderView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_indicator" />
+
+        <LinearLayout
+            android:id="@+id/pagesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" />
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/row1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="145dp"
+        android:background="@color/colorGrey"
         android:orientation="horizontal"
         android:paddingBottom="5dp">
 
@@ -44,7 +64,7 @@
                 android:background="#D8D8D8"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#D8D8D8"
+                app:cardBackgroundColor="@color/btnHomeColor"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 
@@ -90,7 +110,7 @@
                 android:background="#D8D8D8"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#D8D8D8"
+                app:cardBackgroundColor="@color/btnHomeColor"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 
@@ -145,7 +165,7 @@
                 android:background="#D8D8D8"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#D8D8D8"
+                app:cardBackgroundColor="@color/btnHomeColor"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 
@@ -189,7 +209,7 @@
                 android:background="#D8D8D8"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#D8D8D8"
+                app:cardBackgroundColor="@color/btnHomeColor"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 

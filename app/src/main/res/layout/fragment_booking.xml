@@ -1,13 +1,57 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.aswanabidin.traveker.BookingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/row2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Coming soon booking" />
+        android:background="@color/colorGrey">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imgbooking"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="130dp"
+                android:src="@drawable/ic_nobooking" />
+
+            <TextView
+                android:id="@+id/txtNoBooking"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/imgbooking"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="20dp"
+                android:gravity="center"
+                android:text="No Active Booking Yet"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/txtNoBooking"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:gravity="center"
+                android:text="Anything you booked shows up here, but it seems like you haven't made any. Let's create one via homepage!"
+                android:textSize="13dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>
