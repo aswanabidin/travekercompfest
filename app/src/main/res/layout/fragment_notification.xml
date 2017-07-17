@@ -2,12 +2,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.example.aswanabidin.traveker.NotificationFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/row2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Coming soon notification" />
+        android:background="@color/colorGrey">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imgnotifikasi"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="130dp"
+                android:src="@drawable/ic_notifikasi" />
+
+            <TextView
+                android:id="@+id/txtNoNotifikasi"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/imgnotifikasi"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="No Notifications Yet"
+                android:textColor="@color/hitam"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/txtNoNotifikasi"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="All notifications we send will appear here, so you can view them easily anytime."
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>

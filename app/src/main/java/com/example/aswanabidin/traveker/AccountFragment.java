@@ -1,5 +1,6 @@
 package com.example.aswanabidin.traveker;
 
+import android.animation.LayoutTransition;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,10 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        LayoutTransition lt = new LayoutTransition();
+        lt.disableTransitionType(LayoutTransition.DISAPPEARING);
+        container.setLayoutTransition(lt);
+
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
 

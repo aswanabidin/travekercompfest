@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">traveker</string>
+    <string name="app_name">Traveker</string>
     <string name="title_activity_halaman_home">HalamanHome</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

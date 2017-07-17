@@ -2,12 +2,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.example.aswanabidin.traveker.AccountFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Coming soon account" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Login"
+            android:textColor="@color/hitam"
+            android:textSize="25dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/etusername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/stroke_rounded"
+                android:fontFamily="sans-serif"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:textSize="13dp" />
+
+            <EditText
+                android:id="@+id/etpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etusername"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/stroke_rounded"
+                android:fontFamily="sans-serif"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/txtForgot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etpass"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:gravity="right"
+                android:linksClickable="true"
+                android:text="Forgot Password?"
+                android:textColor="@color/colorGreen"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/btnlogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtForgot"
+                android:background="@drawable/btn_rounded_corners"
+                android:fontFamily="sans-serif"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Login"
+                android:textColor="@color/putih" />
+
+            <Button
+                android:id="@+id/btndaftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnlogin"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/stroke_rounded"
+                android:fontFamily="sans-serif"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Daftar"
+                android:textColor="@color/colorGreen" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

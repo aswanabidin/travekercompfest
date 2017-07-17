@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.example.aswanabidin.traveker.BookingFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -28,13 +31,14 @@
 
             <TextView
                 android:id="@+id/txtNoBooking"
-                android:layout_width="150dp"
+                android:layout_width="160dp"
                 android:layout_height="40dp"
                 android:layout_below="@+id/imgbooking"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="20dp"
                 android:gravity="center"
                 android:text="No Active Booking Yet"
+                android:textColor="@color/hitam"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -42,12 +46,11 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/txtNoBooking"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:gravity="center"
                 android:text="Anything you booked shows up here, but it seems like you haven't made any. Let's create one via homepage!"
-                android:textSize="13dp" />
+                android:textSize="12dp" />
 
         </RelativeLayout>
 
