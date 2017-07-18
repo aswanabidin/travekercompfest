@@ -5,12 +5,13 @@
     android:animateLayoutChanges="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.example.aswanabidin.traveker.AccountFragment">
+    tools:context="com.example.aswanabidin.traveker.Fragments.AccountFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorGrey"
         android:orientation="vertical">
 
         <TextView
@@ -76,7 +77,9 @@
                 android:fontFamily="sans-serif"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="Login"
-                android:textColor="@color/putih" />
+                android:textAllCaps="false"
+                android:textColor="@color/putih"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btndaftar"
@@ -84,11 +87,15 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/btnlogin"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/stroke_rounded"
+                android:background="@drawable/stroke_rounded_daftar"
+                android:clickable="true"
+                android:focusable="true"
                 android:fontFamily="sans-serif"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:text="Daftar"
-                android:textColor="@color/colorGreen" />
+                android:onClick="btnRegister"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

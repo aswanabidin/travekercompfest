@@ -5,7 +5,7 @@
     android:animateLayoutChanges="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.example.aswanabidin.traveker.NotificationFragment">
+    tools:context="com.example.aswanabidin.traveker.Fragments.NotificationFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout

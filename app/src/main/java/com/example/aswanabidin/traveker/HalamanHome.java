@@ -1,7 +1,5 @@
 package com.example.aswanabidin.traveker;
 
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,18 +8,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.example.aswanabidin.traveker.HomeFragment;
-import com.example.aswanabidin.traveker.BookingFragment;
-import com.example.aswanabidin.traveker.NotificationFragment;
-import com.example.aswanabidin.traveker.AccountFragment;
+
+import com.example.aswanabidin.traveker.Fragments.HomeFragment;
+import com.example.aswanabidin.traveker.Fragments.BookingFragment;
+import com.example.aswanabidin.traveker.Fragments.NotificationFragment;
+import com.example.aswanabidin.traveker.Fragments.AccountFragment;
 
 
 public class HalamanHome extends AppCompatActivity {

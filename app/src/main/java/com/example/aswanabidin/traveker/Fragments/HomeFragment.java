@@ -1,4 +1,4 @@
-package com.example.aswanabidin.traveker;
+package com.example.aswanabidin.traveker.Fragments;
 
 import android.animation.LayoutTransition;
 import android.content.Intent;
@@ -9,9 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
+import com.example.aswanabidin.traveker.HalamanFlights;
+import com.example.aswanabidin.traveker.HalamanHotel;
+import com.example.aswanabidin.traveker.HalamanItenerary;
+import com.example.aswanabidin.traveker.HalamanTours;
+import com.example.aswanabidin.traveker.R;
 import com.example.aswanabidin.traveker.Sliders.FragmentSlider;
 import com.example.aswanabidin.traveker.Sliders.SliderIndicator;
 import com.example.aswanabidin.traveker.Sliders.SliderPagerAdapter;
@@ -31,10 +35,6 @@ public class HomeFragment extends Fragment {
 
     private SliderView sliderView;
     private LinearLayout mLinearLayout;
-
-    private CardView flights;
-    private CardView hotels;
-
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,6 +65,24 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 hotels(view);
+            }
+        });
+
+        final CardView itenerary = (CardView) rootView.findViewById(R.id.itenerary) ;
+
+        itenerary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itenerary(view);
+            }
+        });
+
+        final CardView tours = (CardView) rootView.findViewById(R.id.tours) ;
+
+        tours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tours(view);
             }
         });
 
@@ -99,6 +117,16 @@ public class HomeFragment extends Fragment {
 
     public void hotels(View view) {
         Intent intent = new Intent(HomeFragment.this.getActivity(), HalamanHotel.class);
+        startActivity(intent);
+    }
+
+    public void itenerary(View view) {
+        Intent intent = new Intent(HomeFragment.this.getActivity(), HalamanItenerary.class);
+        startActivity(intent);
+    }
+
+    public void tours(View view) {
+        Intent intent = new Intent(HomeFragment.this.getActivity(), HalamanTours.class);
         startActivity(intent);
     }
 }

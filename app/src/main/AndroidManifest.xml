@@ -22,17 +22,30 @@
         <activity
             android:name=".HalamanHome"
             android:label="@string/title_activity_halaman_home" />
-
         <activity
             android:name=".HalamanFlights"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HalamanHotel"
             android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanItenerary"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanTours"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanAddItenerary"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanDaftar"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar"/>
-
     </application>
 
 </manifest>

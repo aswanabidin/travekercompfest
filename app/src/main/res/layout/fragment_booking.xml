@@ -6,7 +6,7 @@
     android:animateLayoutChanges="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.example.aswanabidin.traveker.BookingFragment">
+    tools:context="com.example.aswanabidin.traveker.Fragments.BookingFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
