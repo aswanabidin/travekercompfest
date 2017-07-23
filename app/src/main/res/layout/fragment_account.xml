@@ -95,6 +95,7 @@
                 android:onClick="btnRegister"
                 android:text="Register"
                 android:textAllCaps="false"
+                android:textColor="@color/colorGreen"
                 android:textStyle="bold" />
 
         </RelativeLayout>
