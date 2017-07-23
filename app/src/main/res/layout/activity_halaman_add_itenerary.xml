@@ -39,138 +39,165 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/appbarlayout"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
-        <TextView
-            android:id="@+id/titleLogin"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Add Story"
-            android:textColor="@color/hitam"
-            android:textSize="20dp" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/appbarlayout"
+            android:layout_marginTop="55dp"
+            android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-
-            <EditText
-                android:id="@+id/etStorylocation"
+            <TextView
+                android:id="@+id/titleLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/stroke_rounded"
-                android:fontFamily="sans-serif"
-                android:hint="Location"
-                android:inputType="textEmailAddress"
-                android:padding="15dp"
-                android:textSize="13dp" />
-
-            <EditText
-                android:id="@+id/etStorytour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etStorylocation"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/stroke_rounded"
-                android:fontFamily="sans-serif"
-                android:hint="Tour Place"
-                android:padding="15dp"
-                android:textSize="13dp" />
-
-            <EditText
-                android:id="@+id/etStoryDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etStorytour"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/stroke_rounded"
-                android:clickable="true"
-                android:focusable="false"
-                android:fontFamily="sans-serif"
-                android:hint="Date"
-                android:padding="15dp"
-                android:textSize="13dp" />
-
-            <EditText
-                android:id="@+id/etStorytitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etStoryDate"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/stroke_rounded"
-                android:fontFamily="sans-serif"
-                android:hint="Title"
-                android:padding="15dp"
-                android:textSize="13dp" />
-
-            <EditText
-                android:id="@+id/etStorydescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etStorytitle"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/stroke_rounded_multiline"
-                android:capitalize="sentences"
-                android:fontFamily="sans-serif"
-                android:gravity="top|left"
-                android:hint="Description"
-                android:inputType="textMultiLine"
-                android:lines="5"
-                android:paddingBottom="8dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="10dp"
-                android:scrollHorizontally="false"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Add Story"
                 android:textColor="@color/hitam"
-                android:textSize="14sp" />
+                android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/btnAddfoto"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etStorydescription"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/stroke_rounded_daftar"
-                android:clickable="true"
-                android:elevation="5dp"
-                android:fontFamily="sans-serif"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:text="Add Photo"
-                android:textAllCaps="false" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/etStorydescription"
-                android:layout_marginLeft="90dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_addphoto" />
+                <EditText
+                    android:id="@+id/etStorylocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:fontFamily="sans-serif"
+                    android:hint="Location"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
 
-            <Button
-                android:id="@+id/btnSubmitstory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnAddfoto"
-                android:background="@drawable/btn_rounded_corners"
-                android:fontFamily="sans-serif"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:text="Submit"
-                android:textAllCaps="false"
-                android:textColor="@color/putih"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/etStorytour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etStorylocation"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:fontFamily="sans-serif"
+                    android:hint="Tour Place"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/etStoryDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etStorytour"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:fontFamily="sans-serif"
+                    android:hint="Date"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/etStorytitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etStoryDate"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:fontFamily="sans-serif"
+                    android:hint="Title"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/etStorydescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etStorytitle"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/stroke_rounded_multiline"
+                    android:capitalize="sentences"
+                    android:fontFamily="sans-serif"
+                    android:gravity="top|left"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:scrollHorizontally="false"
+                    android:textAllCaps="true"
+                    android:textColor="@color/hitam"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnAddfoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etStorydescription"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded_daftar"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="Add Photo"
+                    android:textAllCaps="false" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/etStorydescription"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_addphoto" />
+
+                <ImageView
+                    android:id="@+id/foto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnAddfoto"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="matrix" />
+
+                <Button
+                    android:id="@+id/btnSubmitstory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/foto"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="75dp"
+                    android:background="@drawable/btn_rounded_corners"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/putih"
+                    android:textStyle="bold" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
