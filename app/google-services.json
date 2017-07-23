@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1013384809056",
+    "firebase_url": "https://traveker-35086.firebaseio.com",
+    "project_id": "traveker-35086",
+    "storage_bucket": "traveker-35086.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013384809056:android:840457b767b9337b",
+        "android_client_info": {
+          "package_name": "com.example.aswanabidin.traveker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013384809056-p628sdepb5ffkml60thfjb89v9grdl8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aswanabidin.traveker",
+            "certificate_hash": "4c40026bf89c50a476b14c8794862460a85c7b2c"
+          }
+        },
+        {
+          "client_id": "1013384809056-00mfvmcou7rfec7djjdpj1mfbkcoe8ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmeCRcIKR0Uc0jHsd-4w-XZO5VnK4Ig2U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013384809056-00mfvmcou7rfec7djjdpj1mfbkcoe8ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

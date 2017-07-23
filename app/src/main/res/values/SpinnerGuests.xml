@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SpinnerGuests">
+        <item>1 Guest(s)</item>
+        <item>2 Guest(s)</item>
+        <item>3 Guest(s)</item>
+        <item>4 Guest(s)</item>
+        <item>5 Guest(s)</item>
+        <item>6 Guest(s)</item>
+        <item>7 Guest(s)</item>
+        <item>8 Guest(s)</item>
+        <item>9 Guest(s)</item>
+        <item>10 Guest(s)</item>
+    </string-array>
+</resources>

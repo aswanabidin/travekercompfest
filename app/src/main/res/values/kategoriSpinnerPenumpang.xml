@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Kategori">
+        <item>1 Passenger(s)</item>
+        <item>2 Passenger(s)</item>
+        <item>3 Passenger(s)</item>
+        <item>4 Passenger(s)</item>
+        <item>5 Passenger(s)</item>
+        <item>6 Passenger(s)</item>
+        <item>7 Passenger(s)</item>
+        <item>8 Passenger(s)</item>
+        <item>9 Passenger(s)</item>
+        <item>10 Passenger(s)</item>
+    </string-array>
+</resources>
