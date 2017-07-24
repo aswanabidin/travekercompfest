@@ -2,6 +2,7 @@ package com.example.aswanabidin.traveker.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
 /**
  * Created by aswanabidin on 7/22/17.
@@ -28,20 +29,26 @@ public class Itenerary implements Parcelable {
     String date;
     String title;
     String description;
+    String imageite;
 
 
-    public Itenerary(String location, String tourplace, String title, String description){
+
+    public Itenerary(String location, String tourplace, String date, String title, String description, String imageite) {
         this.location = location;
         this.tourplace = tourplace;
+        this.date = date;
         this.title = title;
         this.description = description;
+        this.imageite = imageite;
     }
+
 
     protected Itenerary(Parcel in) {
         location = in.readString();
         tourplace = in.readString();
         title = in.readString();
         description = in.readString();
+        imageite = in.readString();
     }
 
     public String getLocation() {
@@ -82,6 +89,14 @@ public class Itenerary implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageite() {
+        return imageite;
+    }
+
+    public void setImageite(String imageite) {
+        this.imageite = imageite;
     }
 
     @Override

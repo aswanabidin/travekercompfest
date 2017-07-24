@@ -140,7 +140,6 @@
                     android:paddingRight="15dp"
                     android:paddingTop="10dp"
                     android:scrollHorizontally="false"
-                    android:textAllCaps="true"
                     android:textColor="@color/hitam"
                     android:textSize="14sp" />
 

@@ -1,37 +1,57 @@
 package com.example.aswanabidin.traveker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.support.design.internal.BottomNavigationItemView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aswanabidin.traveker.Adapter.RecyclerAdapter;
 import com.example.aswanabidin.traveker.Fragments.HomeFragment;
 import com.example.aswanabidin.traveker.Model.Itenerary;
+import com.example.aswanabidin.traveker.Model.IteneraryModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import butterknife.BindView;
+
 
 public class HalamanItenerary extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
-    private ArrayList<Itenerary> dataItenerary = new ArrayList<>();
+//    @BindView(R.id.listItenerary) RecyclerView recyclerView;
 
+    RecyclerView recyclerView;
+    ArrayList itenerary;
+    FirebaseDatabase database;
+    List<IteneraryModel> list;
+    DatabaseReference myRef;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
+    Button view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,35 +69,53 @@ public class HalamanItenerary extends AppCompatActivity {
         TextView judul = (TextView) toolbar.findViewById(R.id.toolbarTitle);
         judul.setText("Itenerary");
 
+        view = (Button) findViewById(R.id.view);
+        layoutManager = new LinearLayoutManager(this);
+//        lm.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView = (RecyclerView) findViewById(R.id.listItenerary);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("itenerary");
 
-        //read dari database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("traveker-35086");
-
-        ref.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Itenerary post = postSnapshot.getValue(Itenerary.class);
+                list = new ArrayList<IteneraryModel>();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    IteneraryModel value = dataSnapshot1.getValue(IteneraryModel.class);
+                    IteneraryModel fire = new IteneraryModel();
+                    String location = value.getLocation();
+                    String tourplace = value.getTourplace();
+                    String date = value.getDate();
+                    String title = value.getTitle();
+                    String description = value.getDescription();
+                    fire.setLocation(location);
+                    fire.setTourplace(tourplace);
+                    fire.setDate(date);
+                    fire.setTitle(title);
+                    fire.setDescription(description);
                 }
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + DatabaseError.UNKNOWN_ERROR);
+                Log.w("Hello", "Failed to read value.", databaseError.toException());
 
             }
         });
 
-        recyclerView = (RecyclerView) findViewById(R.id.listItenerary);
-
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-//        adapter = new RecyclerAdapter(this,values);
-
-        recyclerView.setAdapter(adapter);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RecyclerAdapter recyclerAdapter = new RecyclerAdapter(list,HalamanItenerary.this);
+                RecyclerView.LayoutManager recyce = new GridLayoutManager(HalamanItenerary.this,2);
+                recyclerView.setLayoutManager(recyce);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                recyclerView.setAdapter(recyclerAdapter);
+            }
+        });
 
         // get the button view
         ImageView storyimg = (ImageView) findViewById(R.id.imgadd);
@@ -89,9 +127,9 @@ public class HalamanItenerary extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
-
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,14 +143,18 @@ public class HalamanItenerary extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            android.app.FragmentManager fm = getFragmentManager();
-            fm.popBackStack();
-            finish();
+            Intent intent = new Intent(this, HalamanHome.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(getBaseContext(), HalamanHome.class);
+        startActivity(intent);
+        finish();
+    }
 }

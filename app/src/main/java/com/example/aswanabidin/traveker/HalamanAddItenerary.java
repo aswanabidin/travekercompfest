@@ -29,12 +29,17 @@ import android.widget.Toast;
 
 import com.example.aswanabidin.traveker.Fragments.HomeFragment;
 import com.example.aswanabidin.traveker.Model.Itenerary;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -44,7 +49,7 @@ import java.util.UUID;
 
 public class HalamanAddItenerary extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
@@ -53,7 +58,7 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
     int day, month, year;
     private String userChoosenTask;
     private File files;
-    private Uri foto = null;
+    private Uri foto ;
     private String namefile;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private ImageView imfoto;
@@ -67,7 +72,7 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
 
         // inisialisasi variabel
 
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("itenerary");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -84,8 +89,9 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
         imfoto.setOnClickListener(this);
         imfoto.setAdjustViewBounds(true);
 
-        mDatabase = FirebaseDatabase.getInstance();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Itenerary");
+        mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://traveker-35086.appspot.com/=");
+
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
@@ -95,6 +101,7 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
         date = (EditText) findViewById(R.id.etStoryDate);
         title = (EditText) findViewById(R.id.etStorytitle);
         description = (EditText) findViewById(R.id.etStorydescription);
+
 
         progressDialog = new ProgressDialog(this);
         departureDate = (EditText) findViewById(R.id.etStoryDate);
@@ -132,49 +139,85 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
                 mDatePicker.show();  }
         });
 
+//        btnsubmit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (foto != null) {
+//                    StorageReference childRef = mStorageRef.child("image.jpg");
+//
+//                    //upload gambar
+//                    UploadTask uploadTask = childRef.putFile(foto);
+//                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            progressDialog.dismiss();
+//                            Toast.makeText(HalamanAddItenerary.this, "Upload Successful", Toast.LENGTH_LONG).show();
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            progressDialog.dismiss();
+//                            Toast.makeText(HalamanAddItenerary.this, "Upload Failed ->" + e, Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+//                }
+//                else {
+//                    Toast.makeText(HalamanAddItenerary.this, "Select an image", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+
+
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //menyimpan file string di get untuk dikirim ke database
-                String slocation = location.getText().toString().trim();
-                String stourplace = tourplace.getText().toString().trim();
-                String sdate = date.getText().toString().trim();
-                String stitle = title.getText().toString().trim();
-                String sdescription = description.getText().toString().trim();
-
-                //membuat objek itenerary
-                Itenerary itenerary = new Itenerary();
-
-                //menambahkan values
-                itenerary.setLocation(slocation);
-                itenerary.setTourplace(stourplace);
-                itenerary.setDate(sdate);
-                itenerary.setTitle(stitle);
-                itenerary.setDescription(sdescription);
-
-                //menyimpan data ke firebase
-                progressDialog.setMessage("Plese Wait...");
+                progressDialog.setMessage("Uploading...");
                 progressDialog.show();
-                ref.push().setValue(itenerary);
-                ref.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+                final StorageReference childRef = mStorageRef.child("images").child(foto.getLastPathSegment());
+                childRef.putFile(foto)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                @SuppressWarnings("VisibleForTests")
+                                        final String urlgambar = taskSnapshot.getMetadata().getPath();
+                                Toast.makeText(HalamanAddItenerary.this, "Upload Successful", Toast.LENGTH_SHORT).show();
 
-                    @Override
-                    public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-                        for (com.google.firebase.database.DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            //ambil data dari snapshot
-                            Itenerary itenerary = postSnapshot.getValue(Itenerary.class);
-                        }
-                        startActivity(new Intent(getApplicationContext(), HomeFragment.class));
-                    }
+                                //menyimpan file string di get untuk dikirim ke database
+                                String slocation = location.getText().toString().trim();
+                                String stourplace = tourplace.getText().toString().trim();
+                                String sdate = date.getText().toString().trim();
+                                String stitle = title.getText().toString().trim();
+                                String sdescription = description.getText().toString().trim();
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        System.out.println("The read failed : " + DatabaseError.UNKNOWN_ERROR);
+                                //membuat objek itenerary
+                                Itenerary itenerary = new Itenerary();
 
-                    }
-                });
+                                //menambahkan values
+                                itenerary.setLocation(slocation);
+                                itenerary.setTourplace(stourplace);
+                                itenerary.setDate(sdate);
+                                itenerary.setTitle(stitle);
+                                itenerary.setDescription(sdescription);
 
+
+                                ref.push().setValue(itenerary);
+                                ref.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for (com.google.firebase.database.DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                            //ambil data dari snapshot
+                                            Itenerary itenerary = postSnapshot.getValue(Itenerary.class);
+                                            progressDialog.dismiss();
+                                        }
+                                        startActivity(new Intent(getApplicationContext(), HalamanItenerary.class));
+                                    }
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                        System.out.println("The read failed : " + DatabaseError.UNKNOWN_ERROR);
+                                    }
+                                });
+                            }
+                        });
             }
         });
 
@@ -186,9 +229,9 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            android.app.FragmentManager fm = getFragmentManager();
-            fm.popBackStack();
-            finish();
+           Intent intent = new Intent(this, HalamanItenerary.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             return true;
         }
 
