@@ -1,5 +1,6 @@
 package com.example.aswanabidin.traveker.Adapter;
 
+import android.content.Context;
 import android.support.annotation.IntegerRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +10,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.aswanabidin.traveker.HalamanItenerary;
+import com.example.aswanabidin.traveker.Model.Itenerary;
+import com.example.aswanabidin.traveker.Model.IteneraryModel;
 import com.example.aswanabidin.traveker.R;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import static com.example.aswanabidin.traveker.R.id.img;
 import static com.example.aswanabidin.traveker.R.id.imgitenerary;
@@ -25,84 +32,60 @@ import static com.example.aswanabidin.traveker.R.id.title;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private ArrayList<String> values;
+//    private HashMap<String, String> values = null;
 
-    public RecyclerAdapter(ArrayList<String> values) {
-        this.values = values;
+    List<IteneraryModel> list;
+    Context context;
+
+
+    public RecyclerAdapter(List<IteneraryModel> list, Context context) {
+        this.list = list;
+        this.context = context;
     }
 
 
 
-//    private String[] title = {"Chapter One",
-//            "Chapter Two",
-//            "Chapter Three",
-//            "Chapter Four",
-//            "Chapter Five",
-//            "Chapter Six",
-//            "Chapter Seven",
-//            "Chapter Eight"};
-//
-//    private String[] details = {"Item one details",
-//            "Item two details", "Item three details",
-//            "Item four details", "Item file details",
-//            "Item six details", "Item seven details",
-//            "Item eight details"};
-//
-//    private int[] image = { R.drawable.ic_japan,
-//            R.drawable.ic_japan,
-//            R.drawable.ic_japan,
-//            R.drawable.ic_japan,
-//            R.drawable.ic_japan,
-//            R.drawable.img_slider_berlin,
-//            R.drawable.img_slider_berlin,
-//            R.drawable.img_slider_berlin };
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.rv_itenerary_item, parent, false);
+
+        //buat view baru
+        View v = LayoutInflater.from(context).inflate(R.layout.rv_itenerary_item, parent, false); //load ke layout cardview
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-//        viewHolder.simage.setImageResource(image[i]);
-//        viewHolder.stitle.setText(title[i]);
-//        viewHolder.sdetail.setText(details[i]);
-        viewHolder.simage.setImageResource(Integer.parseInt(values.get(i)));
-        viewHolder.stitle.setText(values.get(i));
-        viewHolder.sdetail.setText(values.get(i));
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        IteneraryModel mylist = list.get(position);
+        holder.location.setText(mylist.getLocation());
+        holder.tourplace.setText(mylist.getTourplace());
+        holder.date.setText(mylist.getDate());
+        holder.title.setText(mylist.getTitle());
+        holder.description.setText(mylist.getDescription());
+
     }
 
     @Override
     public int getItemCount() {
-        return values.size();
+        return list.size();
     }
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public int currentItem;
-        public ImageView simage;
-        public TextView stitle;
-        public TextView sdetail;
+        ImageView image;
+        TextView title, description, location, tourplace, date;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-            simage = (ImageView) itemView.findViewById(imgitenerary);
-            stitle = (TextView) itemView.findViewById(R.id.titleitenerary);
-            sdetail = (TextView) itemView.findViewById(R.id.descriptionitenerary);
 
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position = getAdapterPosition();
-//                    Snackbar.make(v, "Click detected on item " + position,
-//                            Snackbar.LENGTH_LONG)
-//                            .setAction("Action",null).show();
-//                }
-//            });
+            image = (ImageView) itemView.findViewById(R.id.imgitenerary);
+            location = (TextView) itemView.findViewById(R.id.locationitenerary);
+            tourplace = (TextView) itemView.findViewById(R.id.tourplaceitenerary);
+            date = (TextView) itemView.findViewById(R.id.dateitenerary);
+            title = (TextView) itemView.findViewById(R.id.titleitenerary);
+            description = (TextView) itemView.findViewById(R.id.descriptionitenerary);
         }
     }
 

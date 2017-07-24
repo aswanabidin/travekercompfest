@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/halamanitenerary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.aswanabidin.traveker.HalamanItenerary">
@@ -54,14 +55,19 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <Button
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbarlayout"
+        android:layout_margin="20dp"
+        android:text="View" />
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/listItenerary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbarlayout"
-        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_below="@+id/view"></android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>
