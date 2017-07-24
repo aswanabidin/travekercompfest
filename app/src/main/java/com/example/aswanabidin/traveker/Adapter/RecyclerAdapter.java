@@ -45,7 +45,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
 
