@@ -31,22 +31,23 @@
             android:layout_marginRight="20dp">
 
             <EditText
-                android:id="@+id/etusername"
+                android:id="@+id/etemaillogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="15dp"
-                android:textSize="13dp" />
+                android:textSize="13dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
 
             <EditText
                 android:id="@+id/etpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etusername"
+                android:layout_below="@+id/etemaillogin"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
