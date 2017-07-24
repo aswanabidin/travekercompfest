@@ -34,13 +34,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 //    private HashMap<String, String> values = null;
 
-    List<IteneraryModel> list;
+    List<Itenerary> list = new ArrayList<>();
     Context context;
 
 
-    public RecyclerAdapter(List<IteneraryModel> list, Context context) {
+    public RecyclerAdapter(List<Itenerary> list) {
         this.list = list;
-        this.context = context;
     }
 
 
@@ -49,14 +48,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
 
         //buat view baru
-        View v = LayoutInflater.from(context).inflate(R.layout.rv_itenerary_item, parent, false); //load ke layout cardview
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_itenerary_item, parent, false); //load ke layout cardview
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        IteneraryModel mylist = list.get(position);
+        Itenerary mylist = list.get(position);
         holder.location.setText(mylist.getLocation());
         holder.tourplace.setText(mylist.getTourplace());
         holder.date.setText(mylist.getDate());
@@ -67,7 +66,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
 
 
@@ -80,7 +79,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public ViewHolder(View itemView) {
             super(itemView);
 
-            image = (ImageView) itemView.findViewById(R.id.imgitenerary);
+//            image = (ImageView) itemView.findViewById(R.id.imgitenerary);
             location = (TextView) itemView.findViewById(R.id.locationitenerary);
             tourplace = (TextView) itemView.findViewById(R.id.tourplaceitenerary);
             date = (TextView) itemView.findViewById(R.id.dateitenerary);
