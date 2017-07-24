@@ -72,15 +72,15 @@
                 android:textSize="13dp" />
 
             <EditText
-                android:id="@+id/etMobileNumber"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etEmail"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
-                android:hint="Mobile Number"
-                android:inputType="numberDecimal"
+                android:hint="Password"
+                android:inputType="textPassword"
                 android:padding="15dp"
                 android:textSize="13dp" />
 
@@ -88,7 +88,7 @@
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etMobileNumber"
+                android:layout_below="@+id/etPassword"
                 android:layout_marginTop="310dp"
                 android:background="@drawable/btn_rounded_corners"
                 android:elevation="5dp"
@@ -100,9 +100,15 @@
                 android:textColor="@color/putih"
                 android:textStyle="bold" />
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
     </LinearLayout>
-
 </RelativeLayout>
