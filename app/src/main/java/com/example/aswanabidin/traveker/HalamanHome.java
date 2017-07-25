@@ -1,5 +1,6 @@
 package com.example.aswanabidin.traveker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -19,7 +20,6 @@ import com.example.aswanabidin.traveker.Fragments.AccountFragment;
 
 public class HalamanHome extends AppCompatActivity {
 
-//    private TextView mTextMessage;
     public ImageView logo;
     public static TabLayout tabLayout;
 
@@ -69,6 +69,7 @@ public class HalamanHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_home);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -76,6 +77,7 @@ public class HalamanHome extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
     }
 
 }

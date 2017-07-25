@@ -48,9 +48,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);
-        setupSlider();
+//        setupSlider();
 
         final CardView flights = (CardView) rootView.findViewById(R.id.flights) ;
 
@@ -95,22 +96,23 @@ public class HomeFragment extends Fragment {
 
         return rootView;
 
+
     }
 
-    private void setupSlider() {
-        sliderView.setDurationScroll(800);
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_london.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_sydney.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_berlin.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_paris1.jpg"));
-
-        mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
-        sliderView.setAdapter(mAdapter);
-        mIndicator = new SliderIndicator(getActivity(), mLinearLayout, sliderView, R.drawable.indicator_circle);
-        mIndicator.setPageCount(fragments.size());
-        mIndicator.show();
-    }
+//    private void setupSlider() {
+//        sliderView.setDurationScroll(800);
+//        List<Fragment> fragments = new ArrayList<>();
+//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_london.jpg"));
+//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_sydney.jpg"));
+//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_berlin.jpg"));
+//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_paris1.jpg"));
+//
+//        mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
+//        sliderView.setAdapter(mAdapter);
+//        mIndicator = new SliderIndicator(getActivity(), mLinearLayout, sliderView, R.drawable.indicator_circle);
+//        mIndicator.setPageCount(fragments.size());
+//        mIndicator.show();
+//    }
 
     public void flights(View view) {
         Intent intent = new Intent(HomeFragment.this.getActivity(), HalamanFlights.class);

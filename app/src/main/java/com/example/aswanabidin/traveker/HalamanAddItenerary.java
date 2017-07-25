@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -110,7 +112,6 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
         departureDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 java.util.Calendar mcurrentDate = java.util.Calendar.getInstance();
                 year = mcurrentDate.get(java.util.Calendar.YEAR);
                 month = mcurrentDate.get(java.util.Calendar.MONTH);
@@ -139,41 +140,44 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
                 mDatePicker.show();  }
         });
 
-//        btnsubmit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (foto != null) {
-//                    StorageReference childRef = mStorageRef.child("image.jpg");
-//
-//                    //upload gambar
-//                    UploadTask uploadTask = childRef.putFile(foto);
-//                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            progressDialog.dismiss();
-//                            Toast.makeText(HalamanAddItenerary.this, "Upload Successful", Toast.LENGTH_LONG).show();
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            progressDialog.dismiss();
-//                            Toast.makeText(HalamanAddItenerary.this, "Upload Failed ->" + e, Toast.LENGTH_LONG).show();
-//                        }
-//                    });
-//                }
-//                else {
-//                    Toast.makeText(HalamanAddItenerary.this, "Select an image", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-
-
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String slocation = location.getText().toString().trim();
+                String stourplace = tourplace.getText().toString().trim();
+                String sdate = date.getText().toString().trim();
+                String stitle = title.getText().toString().trim();
+                String sdescription = description.getText().toString().trim();
+
+                if (TextUtils.isEmpty(slocation)){
+                    Toast.makeText(getApplicationContext(), "Enter location!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(stourplace)){
+                    Toast.makeText(getApplicationContext(), "Enter tourplace!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(sdate)){
+                    Toast.makeText(getApplicationContext(), "Enter date!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(stitle)){
+                    Toast.makeText(getApplicationContext(), "Enter title!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(sdescription)){
+                    Toast.makeText(getApplicationContext(), "Enter description!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                final StorageReference childRef = mStorageRef.child("images").child(foto.getLastPathSegment());
                 progressDialog.setMessage("Uploading...");
                 progressDialog.show();
-                final StorageReference childRef = mStorageRef.child("images").child(foto.getLastPathSegment());
                 childRef.putFile(foto)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override

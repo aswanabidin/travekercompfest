@@ -34,14 +34,15 @@
                 android:id="@+id/etemaillogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="15dp"
-                android:textSize="13dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="13dp" />
 
             <EditText
                 android:id="@+id/etpass"

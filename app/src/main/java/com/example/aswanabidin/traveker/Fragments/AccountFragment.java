@@ -1,6 +1,7 @@
 package com.example.aswanabidin.traveker.Fragments;
 
 import android.animation.LayoutTransition;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -33,6 +34,7 @@ public class AccountFragment extends Fragment {
     private EditText txtPass;
     private Button btnLogin;
     private FirebaseAuth auth;
+    private ProgressDialog progressDialog;
 
     public AccountFragment() {
 
@@ -62,9 +64,12 @@ public class AccountFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
+        progressDialog = new ProgressDialog(getContext());
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String email = txtEmail.getText().toString().trim();
                 String pass = txtPass.getText().toString().trim();
 
@@ -81,10 +86,14 @@ public class AccountFragment extends Fragment {
                 auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.setMessage("Login..");
+                        progressDialog.show();
                         if(!task.isSuccessful()){
-                            Toast.makeText(getContext(),"gagal",Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            Toast.makeText(getContext(),"Login Failed!",Toast.LENGTH_SHORT).show();
                         }else{
                             //pindahin ke halaman main
+
                             Intent intent = new Intent(AccountFragment.this.getActivity(), HalamanHome.class);
                             startActivity(intent);
                         }

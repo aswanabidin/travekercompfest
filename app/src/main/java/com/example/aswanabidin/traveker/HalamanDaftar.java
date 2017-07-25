@@ -1,5 +1,6 @@
 package com.example.aswanabidin.traveker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HalamanDaftar extends AppCompatActivity {
     private FirebaseAuth auth;
-    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +41,15 @@ public class HalamanDaftar extends AppCompatActivity {
         Button btnRegis = (Button) findViewById(R.id.btnRegister);
         final EditText txtEmail = (EditText) findViewById(R.id.etEmail);
         final EditText txtPass = (EditText) findViewById(R.id.etPassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        progressDialog = new ProgressDialog(this);
 
         auth = FirebaseAuth.getInstance();
 
         btnRegis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String email = txtEmail.getText().toString().trim();
                 String pass = txtPass.getText().toString().trim();
 
@@ -59,18 +63,21 @@ public class HalamanDaftar extends AppCompatActivity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
 
                 auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(HalamanDaftar.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(HalamanDaftar.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
+                        progressDialog.setMessage("Registering...");
+                        progressDialog.show();
+
+                        Toast.makeText(HalamanDaftar.this, "Registering Success", Toast.LENGTH_SHORT).show();
 
                         if(!task.isSuccessful()){
+                            progressDialog.dismiss();
                             Toast.makeText(HalamanDaftar.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         }else{
+
                             //pindahin ke halaman main
                             Intent intent = new Intent(HalamanDaftar.this, HalamanHome.class);
                             startActivity(intent);
