@@ -5,7 +5,7 @@
     android:id="@+id/halamanitenerary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aswanabidin.traveker.HalamanItenerary">
+    tools:context="com.example.aswanabidin.traveker.CardHome.HalamanItenerary">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlayout"
@@ -55,19 +55,13 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <Button
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appbarlayout"
-        android:layout_margin="20dp"
-        android:text="View" />
-
+    <!-- item recylerview -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listItenerary"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/view"></android.support.v7.widget.RecyclerView>
+        android:layout_below="@+id/appbarlayout"></android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>

@@ -1,14 +1,19 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    tools:context="com.example.aswanabidin.traveker.Fragments.HomeFragment">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
@@ -253,4 +258,4 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</merge>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:minHeight="@dimen/abc_action_bar_default_height_material"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left">
+
+                    <TextView
+                        android:id="@+id/toolbarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/imgitenerary"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/appbarlayout"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitXY" />
+
+        <RelativeLayout
+            android:id="@+id/relayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iviteneray"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/titleitenerary"
+                style="bold"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgitenerary"
+                android:text="Ini Judul"
+                android:textStyle="bold"
+                android:textColor="@color/hitam"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tourplaceitenerary"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleitenerary"
+                android:text="Tour Place"
+                android:textColor="@color/grey"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/dateitenerary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgitenerary"
+                android:layout_toRightOf="@+id/tourplaceitenerary"
+                android:gravity="right"
+                android:text="Tanggal"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/locationitenerary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateitenerary"
+                android:layout_toRightOf="@+id/tourplaceitenerary"
+                android:gravity="right"
+                android:text="Location"
+                android:textSize="13sp" />
+
+            <com.uncopt.android.widget.text.justify.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/descriptionitenerary"
+                android:layout_below="@+id/tourplaceitenerary"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Description"
+                android:textAlignment="gravity"
+                android:textColor="@color/hitam"
+                android:textSize="13sp"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

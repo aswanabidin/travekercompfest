@@ -189,6 +189,7 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:text="Submit"
+                    android:onClick="btnSubmitstory"
                     android:textAllCaps="false"
                     android:textColor="@color/putih"
                     android:textStyle="bold" />

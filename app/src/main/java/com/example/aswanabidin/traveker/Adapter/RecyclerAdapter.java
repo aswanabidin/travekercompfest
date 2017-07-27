@@ -1,91 +1,132 @@
 package com.example.aswanabidin.traveker.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.IntegerRes;
-import android.support.design.widget.Snackbar;
+import android.content.Intent;
+import android.content.res.AssetManager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.aswanabidin.traveker.HalamanItenerary;
-import com.example.aswanabidin.traveker.Model.Itenerary;
+import com.bumptech.glide.Glide;
+import com.example.aswanabidin.traveker.CardHome.HalamanItenerary;
+import com.example.aswanabidin.traveker.HalamanDetailItenerary;
 import com.example.aswanabidin.traveker.Model.IteneraryModel;
 import com.example.aswanabidin.traveker.R;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import static com.example.aswanabidin.traveker.R.id.img;
-import static com.example.aswanabidin.traveker.R.id.imgitenerary;
-import static com.example.aswanabidin.traveker.R.id.title;
 
 /**
  * Created by aswanabidin on 7/22/17.
  */
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 
-//    private HashMap<String, String> values = null;
+    //deklarasi variabel
+    OnItemClickListener mItemClickListener;
+    StorageReference mStorageRef;
+    private ArrayList<IteneraryModel> iteneraryModelList = new ArrayList<>();
+    private Activity activity;
+    private Context context;
 
-    List<Itenerary> list = new ArrayList<>();
-    Context context;
-
-
-    public RecyclerAdapter(List<Itenerary> list) {
-        this.list = list;
+    public RecyclerAdapter(ArrayList<IteneraryModel> iteneraryModelList){
+        this.iteneraryModelList = iteneraryModelList;
     }
 
-
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-
-        //buat view baru
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_itenerary_item, parent, false); //load ke layout cardview
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
+    public RecyclerAdapter(Context context) {
+        this.context = context;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Itenerary mylist = list.get(position);
-        holder.location.setText(mylist.getLocation());
-        holder.tourplace.setText(mylist.getTourplace());
-        holder.date.setText(mylist.getDate());
-        holder.title.setText(mylist.getTitle());
-        holder.description.setText(mylist.getDescription());
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_itenerary, parent, false); //layout cardview punya
+        return new MyViewHolder(itemView);
+    }
 
+    @Override
+    public void onBindViewHolder(RecyclerAdapter.MyViewHolder holder, int position) {
+
+        final IteneraryModel iteneraryModel = iteneraryModelList.get(position);
+
+        holder.location.setText(iteneraryModel.getLocation());
+        holder.tourplace.setText(iteneraryModel.getTourplace());
+        holder.date.setText(iteneraryModel.getDate());
+        holder.title.setText(iteneraryModel.getTitle());
+        holder.description.setText(iteneraryModel.getDescription());
+        Picasso.with(context).load(iteneraryModel.getUrl()).fit().centerCrop().into(holder.imageView);
+        holder.itemCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, HalamanDetailItenerary.class);
+                intent.putExtra("image",iteneraryModel);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //tadi error nihh
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return list == null ? 0 : list.size();
+        return (iteneraryModelList == null) ? 0 : iteneraryModelList.size();
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView image;
-        TextView title, description, location, tourplace, date;
+        //viewholder akan mendiskripsikan item view yang ditempatkan di dalam recylcerview
 
+        private TextView location, tourplace, date, title, description;
+        private ImageView imageView;
+        private CardView cardView;
+        private View itemCard;
+        ArrayList<IteneraryModel> iteneraryModelList = new ArrayList<IteneraryModel>();
+        Context context;
 
-        public ViewHolder(View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
 
-//            image = (ImageView) itemView.findViewById(R.id.imgitenerary);
             location = (TextView) itemView.findViewById(R.id.locationitenerary);
             tourplace = (TextView) itemView.findViewById(R.id.tourplaceitenerary);
             date = (TextView) itemView.findViewById(R.id.dateitenerary);
             title = (TextView) itemView.findViewById(R.id.titleitenerary);
             description = (TextView) itemView.findViewById(R.id.descriptionitenerary);
+            imageView = (ImageView) itemView.findViewById(R.id.imgitenerary);
+            itemCard = (View) itemView.findViewById(R.id.item_card);
+
         }
     }
+
+    public void addData(IteneraryModel im) {
+        iteneraryModelList.add(im);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        public void onItemClick(View view, int position);
+    }
+
+
 
 }

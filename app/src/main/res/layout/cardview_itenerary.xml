@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview_itenerary"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground"
+    android:paddingBottom="5dp">
+
+    <RelativeLayout
+        android:id="@+id/item_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="24dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgitenerary"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/titleitenerary"
+            style="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgitenerary"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Ini Judul"
+            android:textColor="@color/hitam"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tourplaceitenerary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleitenerary"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="Tangkuban Parahu"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/locationitenerary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/titleitenerary"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/tourplaceitenerary"
+            android:gravity="right"
+            android:text="Bandung"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/dateitenerary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/imgitenerary"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/titleitenerary"
+            android:gravity="right"
+            android:text="10 Mei 2017"
+            android:textColor="@color/grey" />
+
+        <com.uncopt.android.widget.text.justify.JustifiedTextView
+            android:id="@+id/descriptionitenerary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tourplaceitenerary"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Ini Deskripsi"
+            android:textColor="@color/hitam"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descriptionitenerary"
+            android:layout_toRightOf="@+id/descriptionitenerary"
+            android:gravity="right|bottom"
+            android:text="Continue Reading..."
+            android:textSize="10sp" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

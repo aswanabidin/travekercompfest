@@ -44,7 +44,10 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.github.ittianyu:BottomNavigationViewEx:1.2.2'
+    compile "com.andkulikov:transitionseverywhere:1.7.4"
     testCompile 'junit:junit:4.12'
+    compile 'com.uncopt:android.justified:1.0'
 }
 apply plugin: 'com.google.gms.google-services'
 

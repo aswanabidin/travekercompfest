@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aswanabidin.traveker.HalamanFlights">
+    tools:context="com.example.aswanabidin.traveker.CardHome.HalamanFlights">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlayout"

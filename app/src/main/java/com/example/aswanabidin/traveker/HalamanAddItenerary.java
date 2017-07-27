@@ -2,13 +2,13 @@ package com.example.aswanabidin.traveker;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -29,8 +30,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.aswanabidin.traveker.Fragments.HomeFragment;
-import com.example.aswanabidin.traveker.Model.Itenerary;
+import com.example.aswanabidin.traveker.CardHome.HalamanItenerary;
+import com.example.aswanabidin.traveker.Model.IteneraryModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,8 +39,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
@@ -64,6 +65,10 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
     private String namefile;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private ImageView imfoto;
+    private String url;
+
+    public static final String FB_STORAGE_PATH = "image/";
+    public static final String FB_DATABASE_PATH = "image";
 
 
 
@@ -91,8 +96,8 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
         imfoto.setOnClickListener(this);
         imfoto.setAdjustViewBounds(true);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Itenerary");
-        mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://traveker-35086.appspot.com/=");
+        mDatabase = FirebaseDatabase.getInstance().getReference(FB_DATABASE_PATH);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
@@ -140,91 +145,177 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
                 mDatePicker.show();  }
         });
 
-        btnsubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        btnsubmit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                String slocation = location.getText().toString().trim();
+//                String stourplace = tourplace.getText().toString().trim();
+//                String sdate = date.getText().toString().trim();
+//                String stitle = title.getText().toString().trim();
+//                String sdescription = description.getText().toString().trim();
+//
+//                if (TextUtils.isEmpty(slocation)){
+//                    Toast.makeText(getApplicationContext(), "Enter location!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//
+//                if (TextUtils.isEmpty(stourplace)){
+//                    Toast.makeText(getApplicationContext(), "Enter tourplace!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//
+//                if (TextUtils.isEmpty(sdate)){
+//                    Toast.makeText(getApplicationContext(), "Enter date!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//
+//                if (TextUtils.isEmpty(stitle)){
+//                    Toast.makeText(getApplicationContext(), "Enter title!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//
+//                if (TextUtils.isEmpty(sdescription)){
+//                    Toast.makeText(getApplicationContext(), "Enter description!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//
+//
+//                //Get the storage reference
+//                StorageReference childRef = mStorageRef.child(FB_STORAGE_PATH + System.currentTimeMillis() +","+getImageExt(foto));
+//
+//                progressDialog.setMessage("Uploading...");
+//                progressDialog.show();
+//
+//                //add file to reference
+//                childRef.putFile(foto)
+//
+//                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                @SuppressWarnings("VisibleForTests")
+//
+//                                final String urlgambar = taskSnapshot.getMetadata().getPath();
+//
+//                                Toast.makeText(HalamanAddItenerary.this, "Upload Successful", Toast.LENGTH_SHORT).show();
+//
+//                                //save image info in to firebase database
+//                                String uploadId = mDatabase.push().getKey();
+//                                mDatabase.child(uploadId);
+//
+//                                //menyimpan file string di get untuk dikirim ke database
+//                                String slocation = location.getText().toString().trim();
+//                                String stourplace = tourplace.getText().toString().trim();
+//                                String sdate = date.getText().toString().trim();
+//                                String stitle = title.getText().toString().trim();
+//                                String sdescription = description.getText().toString().trim();
+//
+//                                //membuat objek itenerary
+//                                IteneraryModel itenerary = new IteneraryModel();
+//
+//                                //menambahkan values
+//                                itenerary.setLocation(slocation);
+//                                itenerary.setTourplace(stourplace);
+//                                itenerary.setDate(sdate);
+//                                itenerary.setTitle(stitle);
+//                                itenerary.setDescription(sdescription);
+//
+//
+//                                ref.push().setValue(itenerary);
+//                                ref.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                                        for (com.google.firebase.database.DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+//                                            //ambil data dari snapshot
+//                                            progressDialog.dismiss();
+//                                        }
+//                                        startActivity(new Intent(getApplicationContext(), HalamanItenerary.class));
+//                                    }
+//                                    @Override
+//                                    public void onCancelled(DatabaseError databaseError) {
+//                                        System.out.println("The read failed : " + DatabaseError.UNKNOWN_ERROR);
+//                                    }
+//                                });
+//
+//
+//                            }
+//
+//
+//
+//                        })
+//                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                                //show upload progress
+//                                double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+//                                progressDialog.setMessage("Uploaded " +(int)progress+"%");
+//                            }
+//                        });
+//
+//
+//            }
+//        });
 
-                String slocation = location.getText().toString().trim();
-                String stourplace = tourplace.getText().toString().trim();
-                String sdate = date.getText().toString().trim();
-                String stitle = title.getText().toString().trim();
-                String sdescription = description.getText().toString().trim();
+    }
 
-                if (TextUtils.isEmpty(slocation)){
-                    Toast.makeText(getApplicationContext(), "Enter location!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+    public void btnSubmitstory(View v){
+        if (foto != null){
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
 
-                if (TextUtils.isEmpty(stourplace)){
-                    Toast.makeText(getApplicationContext(), "Enter tourplace!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            //get the storage reference
+            StorageReference ref = mStorageRef.child(FB_STORAGE_PATH + System.currentTimeMillis() +","+getImageExt(foto));
 
-                if (TextUtils.isEmpty(sdate)){
-                    Toast.makeText(getApplicationContext(), "Enter date!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            //add file to reference
+            ref.putFile(foto)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            //dismiss dialog ketika sukses
+                            progressDialog.dismiss();
 
-                if (TextUtils.isEmpty(stitle)){
-                    Toast.makeText(getApplicationContext(), "Enter title!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(sdescription)){
-                    Toast.makeText(getApplicationContext(), "Enter description!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                final StorageReference childRef = mStorageRef.child("images").child(foto.getLastPathSegment());
-                progressDialog.setMessage("Uploading...");
-                progressDialog.show();
-                childRef.putFile(foto)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                @SuppressWarnings("VisibleForTests")
-                                        final String urlgambar = taskSnapshot.getMetadata().getPath();
-                                Toast.makeText(HalamanAddItenerary.this, "Upload Successful", Toast.LENGTH_SHORT).show();
-
-                                //menyimpan file string di get untuk dikirim ke database
-                                String slocation = location.getText().toString().trim();
-                                String stourplace = tourplace.getText().toString().trim();
-                                String sdate = date.getText().toString().trim();
-                                String stitle = title.getText().toString().trim();
-                                String sdescription = description.getText().toString().trim();
-
-                                //membuat objek itenerary
-                                Itenerary itenerary = new Itenerary();
-
-                                //menambahkan values
-                                itenerary.setLocation(slocation);
-                                itenerary.setTourplace(stourplace);
-                                itenerary.setDate(sdate);
-                                itenerary.setTitle(stitle);
-                                itenerary.setDescription(sdescription);
+                            //display toast msg ketika sukses
+                            Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), HalamanItenerary.class));
 
 
-                                ref.push().setValue(itenerary);
-                                ref.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        for (com.google.firebase.database.DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                            //ambil data dari snapshot
-                                            Itenerary itenerary = postSnapshot.getValue(Itenerary.class);
-                                            progressDialog.dismiss();
-                                        }
-                                        startActivity(new Intent(getApplicationContext(), HalamanItenerary.class));
-                                    }
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-                                        System.out.println("The read failed : " + DatabaseError.UNKNOWN_ERROR);
-                                    }
-                                });
-                            }
-                        });
-            }
-        });
+                            IteneraryModel iteneraryModel = new IteneraryModel(location.getText().toString(), tourplace.getText().toString(),
+                                    date.getText().toString(), title.getText().toString(), description.getText().toString(),
+                                    taskSnapshot.getDownloadUrl().toString());
 
+                            //save umage info in to firebase database
+                            String uploadId = mDatabase.push().getKey();
+                            mDatabase.child(uploadId).setValue(iteneraryModel);
+
+                        }
+
+                    })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            //dismiss dialog ketika terjadi error
+                            progressDialog.dismiss();
+                            //display toast msg ketika terjadi error
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            //show upload progress
+                            double progress = (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            progressDialog.setMessage("Uploaded " + (int)progress+" %");
+                        }
+                    });
+        } else {
+            Toast.makeText(getApplicationContext(), "Please select image" , Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     // kodingan tombol back <-
@@ -357,6 +448,12 @@ public class HalamanAddItenerary extends AppCompatActivity implements View.OnCli
                 }
                 break;
         }
+    }
+
+    public String getImageExt(Uri foto){
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(foto));
     }
 
 }

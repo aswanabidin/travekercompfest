@@ -1,10 +1,14 @@
-package com.example.aswanabidin.traveker;
+package com.example.aswanabidin.traveker.CardHome;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.aswanabidin.traveker.HalamanHome;
+import com.example.aswanabidin.traveker.R;
 
 public class HalamanTours extends AppCompatActivity {
 
@@ -31,12 +35,21 @@ public class HalamanTours extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            android.app.FragmentManager fm = getFragmentManager();
-            fm.popBackStack();
+            Intent intent = new Intent(this, HalamanHome.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             finish();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(getBaseContext(), HalamanHome.class);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        startActivity(intent);
+        finish();
     }
 }

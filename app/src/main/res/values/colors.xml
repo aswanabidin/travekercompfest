@@ -9,8 +9,5 @@
     <color name="hitam">#000000</color>
     <color name="putih">#ffffff</color>
     <color name="biru">#0E4D99</color>
-
-
-
-
+    <color name="grey">#bfbfbf</color>
 </resources>

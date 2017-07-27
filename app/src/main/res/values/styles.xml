@@ -21,6 +21,18 @@
         <item name="colorAccent">@color/colorGreen</item>
     </style>
 
+    <style name="NavigationViewOwnStyle">
+        <item name="android:listPreferredItemHeightSmall">80dp</item><!--item height-->
+        <item name="android:textSize">2sp</item> <!--item text size-->
+        <item name="android:fontFamily">serif</item>
+    </style>
+
+    <style name="Fade">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+
 
 
 </resources>

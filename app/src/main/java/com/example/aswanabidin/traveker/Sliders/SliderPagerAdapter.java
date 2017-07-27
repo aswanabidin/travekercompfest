@@ -22,6 +22,8 @@ public class SliderPagerAdapter extends FragmentStatePagerAdapter {
         mFrags = frags;
     }
 
+
+
     @Override
     public Fragment getItem(int position) {
         int index = position % mFrags.size();
