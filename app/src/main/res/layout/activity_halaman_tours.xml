@@ -70,15 +70,15 @@
             android:layout_marginLeft="0dp"
             android:layout_marginRight="20dp">
 
-            <EditText
-                android:id="@+id/etdestinationhotel"
+            <Spinner
+                android:id="@+id/spindestinationtours"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
                 android:hint="Destination"
-                android:padding="15dp"
-                android:textSize="13dp" />
+                android:spinnerMode="dialog"
+                android:textSize="13sp" />
 
         </RelativeLayout>
 

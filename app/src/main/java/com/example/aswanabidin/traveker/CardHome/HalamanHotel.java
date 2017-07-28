@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,10 +15,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aswanabidin.traveker.Adapter.SpinnerAdapter;
 import com.example.aswanabidin.traveker.HalamanHome;
+import com.example.aswanabidin.traveker.Model.ItemAirportModel;
 import com.example.aswanabidin.traveker.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class HalamanHotel extends AppCompatActivity {
@@ -119,18 +123,140 @@ public class HalamanHotel extends AppCompatActivity {
                 mDatePicker.show();  }
         });
 
-        spguests = (Spinner) findViewById(R.id.spinguests);
-        sprooms = (Spinner) findViewById(R.id.spinrooms);
+        //list dialog daftar room
+        ArrayList<ItemAirportModel> listguest = new ArrayList<>();
+        listguest.add(new ItemAirportModel("1 Guest(s)"));
+        listguest.add(new ItemAirportModel("2 Guest(s)"));
+        listguest.add(new ItemAirportModel("3 Guest(s)"));
+        listguest.add(new ItemAirportModel("4 Guest(s)"));
+        listguest.add(new ItemAirportModel("5 Guest(s)"));
+        listguest.add(new ItemAirportModel("6 Guest(s)"));
+        listguest.add(new ItemAirportModel("7 Guest(s)"));
+        listguest.add(new ItemAirportModel("8 Guest(s)"));
+        listguest.add(new ItemAirportModel("9 Guest(s)"));
+        listguest.add(new ItemAirportModel("10 Guest(s)"));
+        listguest.add(new ItemAirportModel("11 Guest(s)"));
 
-        ArrayAdapter<CharSequence> guests = ArrayAdapter.createFromResource(this,
-                R.array.SpinnerGuests, android.R.layout.simple_spinner_item);
-        guests.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spguests.setAdapter(guests);
+        //list spinner dialog room
+        Spinner sp = (Spinner) findViewById(R.id.spinguests);
+        final SpinnerAdapter adapter = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txtspinner,listguest){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                View itemView = super.getView(position, convertView, parent);
+                if(position == getCount()){
+                    ((TextView)itemView.findViewById(R.id.txtspinner)).setText("");
+                    ((TextView)itemView.findViewById(R.id.txtspinner)).setHint("Guest(s)");
+                }
+                return itemView;
+            }
+            @Override
+            public int getCount(){
+                return super.getCount()-1;
+            }
+        };
+        sp.setAdapter(adapter);
+        sp.setSelection(adapter.getCount());
+        sp.setPrompt("Guest(s)");
 
-        ArrayAdapter<CharSequence> rooms = ArrayAdapter.createFromResource(this,
-                R.array.SpinnerRooms, android.R.layout.simple_spinner_item);
-        rooms.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sprooms.setAdapter(rooms);
+
+
+        //list dialog daftar guest
+        ArrayList<ItemAirportModel> listroom = new ArrayList<>();
+        listroom.add(new ItemAirportModel("1 Guest(s)"));
+        listroom.add(new ItemAirportModel("2 Guest(s)"));
+        listroom.add(new ItemAirportModel("3 Guest(s)"));
+        listroom.add(new ItemAirportModel("4 Guest(s)"));
+        listroom.add(new ItemAirportModel("5 Guest(s)"));
+        listroom.add(new ItemAirportModel("6 Guest(s)"));
+        listroom.add(new ItemAirportModel("7 Guest(s)"));
+        listroom.add(new ItemAirportModel("8 Guest(s)"));
+        listroom.add(new ItemAirportModel("9 Guest(s)"));
+        listroom.add(new ItemAirportModel("10 Guest(s)"));
+        listroom.add(new ItemAirportModel("11 Guest(s)"));
+
+
+        //list spinner dialog guest
+        Spinner sp1 = (Spinner) findViewById(R.id.spinrooms);
+        final SpinnerAdapter adapter1 = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txtspinner,listroom){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                View itemView = super.getView(position, convertView, parent);
+                if(position == getCount()){
+                    ((TextView)itemView.findViewById(R.id.txtspinner)).setText("");
+                    ((TextView)itemView.findViewById(R.id.txtspinner)).setHint("Room(s)");
+                }
+                return itemView;
+            }
+            @Override
+            public int getCount(){
+                return super.getCount()-1;
+            }
+        };
+        sp1.setAdapter(adapter1);
+        sp1.setSelection(adapter1.getCount());
+        sp1.setPrompt("Room(s)");
+
+
+        // list dialog daftar airport/location
+        ArrayList<ItemAirportModel> list = new ArrayList<>();
+        list.add(new ItemAirportModel("Jakarta, Indonesia (Soekarno Hatta) - CGK"));
+        list.add(new ItemAirportModel("Yogakarta, Indonesia (Adi Sucipto) - JOG"));
+        list.add(new ItemAirportModel("Makassar, Indonesia (Sultan Hasanuddin)"));
+        list.add(new ItemAirportModel("Bandung, Indonesia (Husein Sastranegara) - BDO"));
+        list.add(new ItemAirportModel("Medan, Indonesia (Kuala Namu) - KNO"));
+        list.add(new ItemAirportModel("Denpasar, Indonesia (Ngurah Rai) - DPS"));
+        list.add(new ItemAirportModel("Surabaya, Indonsia (Juanda) - SUB"));
+        list.add(new ItemAirportModel("Padang, Indonesia (Minangkabau) - PDG"));
+        list.add(new ItemAirportModel("Batam, Indonesia (Hang Nadim Airpot) - BTH"));
+        list.add(new ItemAirportModel("Banda Aceh, Indonesia (Sultan Iskandar Muda) - BTJ"));
+        list.add(new ItemAirportModel("Pekanbaru, Indonesia (Sultan Syarfi Kasim II) - PKU"));
+        list.add(new ItemAirportModel("Palembang, Indonesia (Sultan Mahmud Badaruddin II) - PLM"));
+        list.add(new ItemAirportModel("Tanjungpinang, Indonesia (Raja Haji Fisabilillah) - TNJ"));
+        list.add(new ItemAirportModel("Bengkulu, Indonesia (Fatmawati Soekarno) - BKS"));
+        list.add(new ItemAirportModel("Bandar Lampung, Indonesia (Radin Inten II) - TKG"));
+        list.add(new ItemAirportModel("Solo, Indonesia (Adisumarmo) - SOC"));
+        list.add(new ItemAirportModel("Semarang, Indonesia (Achmad Yani) - SRG"));
+        list.add(new ItemAirportModel("Masalembo, Indonesia (Valia Rahma) - MSI"));
+        list.add(new ItemAirportModel("Lombok, Indonesia (Lombok) - LOP"));
+        list.add(new ItemAirportModel("Tarakan, Indonesia (Juwata) - TRK"));
+        list.add(new ItemAirportModel("Berau, Indonesia (Kalimarau) - BEJ"));
+        list.add(new ItemAirportModel("Banjarmasin, Indonesia (Syamsuddin-Noor) - BDJ"));
+        list.add(new ItemAirportModel("Manado, Indonesia (Sam Ratulangi) - MDC"));
+        list.add(new ItemAirportModel("Kendari, Indonesia (Haluoleo) - KDI"));
+        list.add(new ItemAirportModel("Nabire, Indonesia (Yos Sudarso) - NBX"));
+        list.add(new ItemAirportModel("Oksibil, Indonesia (Iskak) - ORG"));
+        list.add(new ItemAirportModel("Jayapura, Indonesia (Sentani) - DJJ"));
+        list.add(new ItemAirportModel("Biak, Indonesia (Frans Kaisiepo) - BIK"));
+        list.add(new ItemAirportModel("Tembagapura, Indonesia (Mozes Kilangin) - TIM"));
+        list.add(new ItemAirportModel("Merauke, Indonesia (Mopah) - MKQ"));
+        list.add(new ItemAirportModel("Tokyo, Jepang (Haneda) - HND"));
+        list.add(new ItemAirportModel("Hilingdon, London (Heathrow) - LHR"));
+        list.add(new ItemAirportModel("Roissy-en, Paris (Paris-Charles de Gaulle) - CDG"));
+        list.add(new ItemAirportModel("Berlin, Jerman (Berlin-Schonefeld) - FBS"));
+        list.add(new ItemAirportModel("Berlin, Jerman (Berlin-Schonefeld) - FBS"));
+
+
+        //list spinner dialog asal
+        Spinner sp2 = (Spinner) findViewById(R.id.spinnerdestinationhotel);
+        final SpinnerAdapter adapter2 = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txtspinner,list){
+            //ngeset text hintnya
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                View itemView = super.getView(position, convertView, parent);
+                if(position == getCount()){
+                    ((TextView)itemView.findViewById(R.id.txtspinner)).setText("");
+                    ((TextView)itemView.findViewById(R.id.txtspinner)).setHint("Destination"); //hint display
+                }
+                return itemView;
+            }
+            @Override
+            public int getCount(){
+                return super.getCount()-1;
+            }
+        };
+        sp2.setAdapter(adapter2);
+        sp2.setSelection(adapter2.getCount());
+        sp2.setPrompt("Destination"); //ngeset judul yg ada di dialognya
 
     }
 

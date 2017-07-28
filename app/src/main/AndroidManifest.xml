@@ -57,6 +57,7 @@
 
         <activity android:name=".HalamanProfile"></activity>
 
+
         <activity
             android:name=".HalamanDetailItenerary"
             android:label=""

@@ -1,6 +1,7 @@
 package com.example.aswanabidin.traveker;
 
 import android.animation.LayoutTransition;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 
 import android.support.design.widget.TabLayout;
 import android.support.transition.TransitionManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -16,16 +18,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.aswanabidin.traveker.CardHome.HalamanFlights;
 import com.example.aswanabidin.traveker.CardHome.HalamanHotel;
 import com.example.aswanabidin.traveker.CardHome.HalamanItenerary;
 import com.example.aswanabidin.traveker.CardHome.HalamanTours;
-import com.example.aswanabidin.traveker.Sliders.SliderIndicator;
-import com.example.aswanabidin.traveker.Sliders.SliderPagerAdapter;
-import com.example.aswanabidin.traveker.Sliders.SliderView;
+import com.example.aswanabidin.traveker.Sliders.ViewPagerAdapter;
 import com.example.aswanabidin.traveker.Utils.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class HalamanHome extends AppCompatActivity {
@@ -33,14 +45,18 @@ public class HalamanHome extends AppCompatActivity {
     public ImageView logo;
     public static TabLayout tabLayout;
 
-    private SliderPagerAdapter mAdapter;
-    private SliderIndicator mIndicator;
     private ProgressDialog progressDialog;
-    private SliderView sliderView;
     private LinearLayout mLinearLayout;
     private static final String TAG = "HalamanHome";
     private Context mContext = HalamanHome.this;
     private static final int ACTIVITY_NUM = 0;
+
+    SliderLayout sliderLayout;
+    HashMap<String,String> Hash_file_maps ;
+
+    ViewPager viewPager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +64,17 @@ public class HalamanHome extends AppCompatActivity {
         setContentView(R.layout.activity_halaman_home);
 
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+
+        viewPager.setAdapter(viewPagerAdapter);
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
+
+
 
 
 //        Log.d(TAG, "onCreate: starting.");
@@ -62,9 +89,9 @@ public class HalamanHome extends AppCompatActivity {
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        CardView flights = (CardView) findViewById(R.id.flights) ;
+        CardView flights = (CardView) findViewById(R.id.flights);
 
-        sliderView = (SliderView) findViewById(R.id.sliderView);
+//        sliderView = (SliderView) findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) findViewById(R.id.pagesContainer);
         progressDialog = new ProgressDialog(this);
 //        setupSlider();
@@ -78,7 +105,7 @@ public class HalamanHome extends AppCompatActivity {
             }
         });
 
-        final CardView hotels = (CardView) findViewById(R.id.hotels) ;
+        final CardView hotels = (CardView) findViewById(R.id.hotels);
 
         hotels.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +114,7 @@ public class HalamanHome extends AppCompatActivity {
             }
         });
 
-        final CardView itenerary = (CardView) findViewById(R.id.itenerary) ;
+        final CardView itenerary = (CardView) findViewById(R.id.itenerary);
 
         itenerary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +123,7 @@ public class HalamanHome extends AppCompatActivity {
             }
         });
 
-        final CardView tours = (CardView) findViewById(R.id.tours) ;
+        final CardView tours = (CardView) findViewById(R.id.tours);
 
         tours.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +137,26 @@ public class HalamanHome extends AppCompatActivity {
         lt.disableTransitionType(LayoutTransition.DISAPPEARING);
 //        setContentView(lt);
 
+    }
 
+    //timer slider show image
+    public class MyTimerTask extends TimerTask{
+
+        @Override
+        public void run() {
+            HalamanHome.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(viewPager.getCurrentItem() == 0){
+                        viewPager.setCurrentItem(1);
+                    } else if (viewPager.getCurrentItem() == 1) {
+                        viewPager.setCurrentItem(2);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
+        }
     }
 
 
@@ -160,64 +206,6 @@ public class HalamanHome extends AppCompatActivity {
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
     }
-
-//    private void setupSlider() {
-//        sliderView.setDurationScroll(800);
-//        List<Fragment> fragments = new ArrayList<>();
-//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_london.jpg"));
-//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_sydney.jpg"));
-//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_berlin.jpg"));
-//        fragments.add(FragmentSlider.newInstance("https://aswanabidin.files.wordpress.com/2017/07/ic_paris1.jpg"));
-//
-//        mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
-//        sliderView.setAdapter(mAdapter);
-//        mIndicator = new SliderIndicator(this, mLinearLayout, sliderView, R.drawable.indicator_circle);
-//        mIndicator.setPageCount(fragments.size());
-//        mIndicator.show();
-//    }
-
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
-//                    HomeFragment homeFragment = new HomeFragment();
-//                    FragmentTransaction fragmentHomeTransaction = getSupportFragmentManager().beginTransaction();
-//                    fragmentHomeTransaction.replace(R.id.content, homeFragment);
-//                    fragmentHomeTransaction.commit();
-//                    return true;
-//
-//                case R.id.navigation_booking:
-//                    BookingFragment bookingFragment = new BookingFragment();
-//                    FragmentTransaction fragmentBookingTransaction = getSupportFragmentManager().beginTransaction();
-//                    fragmentBookingTransaction.replace(R.id.content, bookingFragment);
-//                    fragmentBookingTransaction.commit();
-//                    return true;
-//
-//                case R.id.navigation_notification:
-//                    NotificationFragment notificationFragment = new NotificationFragment();
-//                    FragmentTransaction fragmentNotificationTransaction = getSupportFragmentManager().beginTransaction();
-//                    fragmentNotificationTransaction.replace(R.id.content, notificationFragment);
-//                    fragmentNotificationTransaction.commit();
-//                    return true;
-//
-//                case R.id.navigation_user:
-//                    AccountFragment accountFragment = new AccountFragment();
-//                    AfterLoginFragment afterLoginFragment = new AfterLoginFragment();
-//                    FragmentTransaction fragmentAccountTransaction = getSupportFragmentManager().beginTransaction();
-//                    fragmentAccountTransaction.replace(R.id.content, accountFragment);
-//                    fragmentAccountTransaction.commit();
-//                    return true;
-//
-//            }
-//            return false;
-//        }
-//
-//    };
-
-
 
 
 }

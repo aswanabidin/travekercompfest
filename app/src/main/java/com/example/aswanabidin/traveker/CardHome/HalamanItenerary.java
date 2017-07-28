@@ -1,7 +1,10 @@
 package com.example.aswanabidin.traveker.CardHome;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,14 +59,11 @@ public class HalamanItenerary extends AppCompatActivity {
     public static final String FB_STORAGE_PATH = "image/";
     public static final String FB_DATABASE_PATH = "image";
 
-
-    @BindView(R.id.listItenerary) RecyclerView mRecyclerView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_halaman_itenerary);
         ButterKnife.bind(this);
 
@@ -92,6 +93,12 @@ public class HalamanItenerary extends AppCompatActivity {
         //menampilkan detail itenerary pada cardview
         cardView = (CardView) findViewById(R.id.cardview_itenerary);
 
+        //progressbar
+        progressBar = (ProgressBar) findViewById(R.id.progress_circle);
+        progressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#429F46"), PorterDuff.Mode.SRC_ATOP);
+
+
+
         //instansiasi firebase database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference(FB_DATABASE_PATH);
@@ -99,6 +106,8 @@ public class HalamanItenerary extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                progressBar.setVisibility(View.VISIBLE); //progress bar mulai
 
                 iteneraryModelList = new ArrayList<IteneraryModel>();
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
@@ -121,6 +130,8 @@ public class HalamanItenerary extends AppCompatActivity {
                     //iteneraryModelList.add(itenerary);
                     mAdapter.addData(itenerary);
                 }
+                progressBar.setVisibility(View.GONE); //progress bar berhenti ketika cardview muncul
+
 
             }
 
@@ -129,7 +140,9 @@ public class HalamanItenerary extends AppCompatActivity {
                 //failed to read value
                 Log.w("Hello", "Failed to read value.", databaseError.toException());
             }
+
         });
+
 
         //menampilkan gambar write yang ada pada toolbar itenerary
         ImageView storyimg = (ImageView) findViewById(R.id.imgadd);
@@ -141,14 +154,15 @@ public class HalamanItenerary extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
+
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_halaman_itenerary, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_halaman_itenerary, menu);
+//        return true;
+//    }
 
     // kodingan tombol back
     @Override

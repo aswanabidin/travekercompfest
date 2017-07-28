@@ -45,7 +45,7 @@
 
         <TextView
             android:id="@+id/tourplaceitenerary"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titleitenerary"
             android:layout_marginBottom="5dp"

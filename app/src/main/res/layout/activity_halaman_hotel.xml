@@ -71,22 +71,22 @@
             android:layout_marginLeft="0dp"
             android:layout_marginRight="20dp">
 
-            <EditText
-                android:id="@+id/etdestinationhotel"
+            <Spinner
+                android:id="@+id/spinnerdestinationhotel"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
                 android:hint="Destination"
-                android:padding="15dp"
+                android:spinnerMode="dialog"
                 android:textSize="13dp" />
 
             <EditText
                 android:id="@+id/etcheckin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etdestinationhotel"
+                android:layout_height="55dp"
+                android:layout_below="@+id/spinnerdestinationhotel"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/stroke_rounded"
                 android:clickable="true"
@@ -94,12 +94,12 @@
                 android:fontFamily="sans-serif"
                 android:hint="Check-in Date"
                 android:padding="15dp"
-                android:textSize="13dp" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/etcheckout"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_below="@+id/etcheckin"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/stroke_rounded"
@@ -108,30 +108,30 @@
                 android:fontFamily="sans-serif"
                 android:hint="Check-out Date"
                 android:padding="15dp"
-                android:textSize="13dp" />
+                android:textSize="13sp" />
 
             <Spinner
                 android:id="@+id/spinguests"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_below="@+id/etcheckout"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
                 android:hint="Total Guest(s)"
-                android:padding="15dp"
+                android:spinnerMode="dialog"
                 android:textSize="13dp" />
 
             <Spinner
                 android:id="@+id/spinrooms"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_below="@+id/spinguests"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/stroke_rounded"
                 android:fontFamily="sans-serif"
                 android:hint="Room(s)"
-                android:padding="15dp"
+                android:spinnerMode="dialog"
                 android:textSize="13dp" />
 
         </RelativeLayout>
@@ -163,7 +163,7 @@
         android:layout_below="@+id/lay1"
         android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="55dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -179,7 +179,7 @@
         android:layout_below="@+id/lay1"
         android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="115dp">
+        android:layout_marginTop="125dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -195,7 +195,7 @@
         android:layout_below="@+id/lay1"
         android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="185dp">
+        android:layout_marginTop="205dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -211,7 +211,7 @@
         android:layout_below="@+id/lay1"
         android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="255dp">
+        android:layout_marginTop="280dp">
 
         <ImageView
             android:layout_width="match_parent"

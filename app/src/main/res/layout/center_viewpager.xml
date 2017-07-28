@@ -2,33 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true">
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
-
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
-        <FrameLayout
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.example.aswanabidin.traveker.Sliders.SliderView
-                android:id="@+id/sliderView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </FrameLayout>
+            android:layout_height="match_parent" />
 
         <View
             android:layout_width="match_parent"
