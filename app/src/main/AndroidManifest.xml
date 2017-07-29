@@ -57,6 +57,16 @@
 
         <activity android:name=".HalamanProfile"></activity>
 
+        <activity
+            android:name=".HalamanListFlights"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".HalamanImportSchedule"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
 
         <activity
             android:name=".HalamanDetailItenerary"

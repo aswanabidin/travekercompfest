@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewFlights"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/white_grey_border_bottom"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:outlineProvider="bounds"
+    android:padding="10dip">
+
+    <ImageView
+        android:id="@+id/imgmaskapai"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvmaskapai"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:text="Maskapai"
+        android:textColor="@color/hitam"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvtime"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvmaskapai"
+        android:padding="3dp"
+        android:text="Time"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvharga"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvtime"
+        android:padding="3dp"
+        android:text="Harga"
+        android:textColor="@color/colorGreen"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>

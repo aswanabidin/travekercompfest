@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,8 @@ import android.widget.Toast;
 
 import com.example.aswanabidin.traveker.Adapter.SpinnerAdapter;
 import com.example.aswanabidin.traveker.HalamanHome;
+import com.example.aswanabidin.traveker.HalamanImportSchedule;
+import com.example.aswanabidin.traveker.HalamanListFlights;
 import com.example.aswanabidin.traveker.Model.ItemAirportModel;
 import com.example.aswanabidin.traveker.R;
 
@@ -39,6 +43,8 @@ public class HalamanFlights extends AppCompatActivity{
     private Spinner sp,sp1;
     int day, month, year;
 
+    Button search;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,15 @@ public class HalamanFlights extends AppCompatActivity{
 
         TextView judul = (TextView) toolbar.findViewById(R.id.toolbarTitle);
         judul.setText("Search Flights");
+
+        search = (Button) findViewById(R.id.btnsearchflights);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HalamanFlights.this, HalamanListFlights.class);
+                startActivity(intent);
+            }
+        });
 
         departureDate = (EditText) findViewById(R.id.etdeparture);
         final java.util.Calendar myCalendar = java.util.Calendar.getInstance();

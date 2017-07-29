@@ -58,6 +58,14 @@ public class HalamanAccount extends AppCompatActivity {
             }
         });
 
+        Button btnImport = (Button) findViewById(R.id.btnimport);
+        btnImport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnImport(view);
+            }
+        });
+
         txtEmail = (EditText) findViewById(R.id.etemaillogin);
         txtPass = (EditText) findViewById(R.id.etpass);
         btnLogin = (Button) findViewById(R.id.btnlogin);
@@ -109,6 +117,11 @@ public class HalamanAccount extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void btnImport(View view) {
+        Intent intent1 = new Intent(HalamanAccount.this, HalamanImportSchedule.class);
+        startActivity(intent1);
+    }
+
 
     /**
      * BottomNavigation setup
@@ -124,12 +137,14 @@ public class HalamanAccount extends AppCompatActivity {
         menuItem.setChecked(true);
     }
 
+
+    //kodingan tombol keluar beserta transitionnya
     @Override
     public void onBackPressed(){
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
+        Intent intent = new Intent(getBaseContext(), HalamanHome.class);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        startActivity(intent);
+        finish();
     }
 
 }

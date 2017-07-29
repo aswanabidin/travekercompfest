@@ -36,6 +36,28 @@
                     android:textStyle="bold" />
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:id="@+id/imgimport"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_add1" />
+            </RelativeLayout>
+
+
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
