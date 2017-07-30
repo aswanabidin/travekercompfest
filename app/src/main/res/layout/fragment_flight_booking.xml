@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.aswanabidin.traveker.Fragments.FlightBookingFragments">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvbookflight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="15dp"
+            android:text="Flight Details"
+            android:textColor="@color/hitam"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tvbooknama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbookflight"
+            android:paddingBottom="10dp"
+            android:text="Garuda Indonesia"
+            android:textColor="@color/grey"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvbooktujuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbooknama"
+            android:text="Makassar(UPG) - Bandung(BDO)"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvbookdate"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbooktujuan"
+            android:text="05 Aug, 2017"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvbooktime"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbooktujuan"
+            android:layout_toRightOf="@+id/tvbookdate"
+            android:gravity="right"
+            android:text="07:30 - 09:10"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvbooktotal"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbookdate"
+            android:paddingTop="15dp"
+            android:text="TOTAL PRICE 1 PASSENGER(S)"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvbookharga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbooktotal"
+            android:paddingTop="5dp"
+            android:text="Rp 000.000/person"
+            android:textColor="@color/colorGreen"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgbookmaskapai"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="70dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvbagage"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/imgbookmaskapai"
+            android:layout_marginRight="10dp"
+            android:paddingTop="5dp"
+            android:text="Bagage 20kg"
+            android:textColor="@color/colorGreen"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvpassenger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvbookharga"
+            android:layout_marginTop="20dp"
+            android:text="Passenger Details"
+            android:textColor="@color/hitam"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/etnameonidcard"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/tvpassenger"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stroke_rounded"
+            android:hint="Name as on ID card/passport"
+            android:inputType="textCapWords"
+            android:paddingLeft="15dp"
+            android:textColor="@color/hitam"
+            android:textSize="13sp" />
+
+        <Spinner
+            android:id="@+id/spintitle"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/etnameonidcard"
+            android:background="@drawable/stroke_rounded"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/btncontinuebook"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="430dp"
+            android:background="@drawable/btn_rounded_corners"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/putih" />
+
+    </RelativeLayout>
+
+</FrameLayout>

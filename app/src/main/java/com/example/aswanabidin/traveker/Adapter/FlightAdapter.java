@@ -1,7 +1,12 @@
 package com.example.aswanabidin.traveker.Adapter;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.aswanabidin.traveker.Fragments.FlightBookingFragments;
+import com.example.aswanabidin.traveker.HalamanBookingFlights;
+import com.example.aswanabidin.traveker.HalamanDetailItenerary;
 import com.example.aswanabidin.traveker.Model.IteneraryModel;
 import com.example.aswanabidin.traveker.Model.ListFlightsModel;
 import com.example.aswanabidin.traveker.R;
@@ -39,6 +47,10 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.MyViewHold
         this.context = context;
     }
 
+    public FlightAdapter(final Fragment currentfragment){
+
+    }
+
 
 
     @Override
@@ -48,15 +60,28 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(FlightAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+
         final ListFlightsModel listFlightsModel = listFlightsModels.get(position);
         holder.maskapai.setText(listFlightsModel.getMaskapai());
         holder.time.setText(listFlightsModel.getTime());
         holder.harga.setText(listFlightsModel.getHarga());
         Picasso.with(context).load(listFlightsModel.getUrl()).into(holder.logomaskapai);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("flights","FlightAdapter");
+//        bundle.putString("time",listFlightsModel.getTime());
+//        bundle.putString("harga",listFlightsModel.getTime());
+        FlightBookingFragments flightBookingFragments = new FlightBookingFragments();
+        flightBookingFragments.setArguments(bundle);
+
         holder.itemFlights.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context, HalamanBookingFlights.class);
+//                intent.putExtra("flights",listFlightsModel);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //tadi error nihh
+                context.startActivity(intent);
 
             }
         });

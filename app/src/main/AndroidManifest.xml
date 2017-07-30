@@ -47,34 +47,28 @@
         <activity
             android:name=".HalamanDaftar"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".HalamanAccount"></activity>
-
-        <activity android:name=".HalamanBookings"></activity>
-
-        <activity android:name=".HalamanNotifications"></activity>
-
-        <activity android:name=".HalamanProfile"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HalamanAccount" />
+        <activity android:name=".HalamanBookings" />
+        <activity android:name=".HalamanNotifications" />
+        <activity android:name=".HalamanProfile" />
         <activity
             android:name=".HalamanListFlights"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HalamanImportSchedule"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HalamanDetailItenerary"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".HalamanBookingFlights"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
-
 
 </manifest>

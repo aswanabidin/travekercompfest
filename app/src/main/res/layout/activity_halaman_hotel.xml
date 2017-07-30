@@ -227,11 +227,11 @@
         <Button
             android:id="@+id/btnsearchhotels"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_below="@+id/etpassenger"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="550dp"
+            android:layout_marginTop="540dp"
             android:background="@drawable/btn_rounded_corners"
             android:fontFamily="sans-serif"
             android:foreground="?android:attr/selectableItemBackground"
