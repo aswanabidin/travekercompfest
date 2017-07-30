@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aswanabidin.traveker.HalamanImportHotel">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarimport"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:minHeight="@dimen/abc_action_bar_default_height_material"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left">
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/appbarlayout"
+            android:layout_marginTop="55dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Import Hotel"
+                android:textColor="@color/hitam"
+                android:textSize="20dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <EditText
+                    android:id="@+id/etHotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:fontFamily="sans-serif"
+                    android:hint="Hotel"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
+
+
+                <EditText
+                    android:id="@+id/etLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etHotel"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:fontFamily="sans-serif"
+                    android:hint="Location"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/etHarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etLocation"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded"
+                    android:fontFamily="sans-serif"
+                    android:hint="Hargaa"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btnfotoschedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etHarga"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_rounded_daftar"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="Add Photo"
+                    android:textAllCaps="false" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/etHarga"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_addphoto" />
+
+                <ImageView
+                    android:id="@+id/fotoshow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnfotoschedule"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="matrix" />
+
+                <Button
+                    android:id="@+id/btnsubmitSchedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fotoshow"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="75dp"
+                    android:background="@drawable/btn_rounded_corners"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:onClick="btnSubmitSchedule"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/putih"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

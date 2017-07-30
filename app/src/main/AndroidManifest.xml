@@ -64,9 +64,24 @@
             android:name=".HalamanDetailItenerary"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".HalamanBookingFlights"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanListHotels"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanImportHotel"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HalamanListTours"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".HalamanImportTours"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

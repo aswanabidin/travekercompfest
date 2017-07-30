@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewHotels"
+    android:layout_width="fill_parent"
+    android:layout_height="120dp"
+    android:background="@drawable/white_grey_border_bottom"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:outlineProvider="bounds"
+    android:padding="10dip">
+
+    <ImageView
+        android:id="@+id/imghotel"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvhotel"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/imghotel"
+        android:padding="3dp"
+        android:text="Nama hotel"
+        android:textColor="@color/hitam"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/imglocation"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/tvhotel"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/imghotel"
+        android:src="@drawable/ic_location" />
+
+    <TextView
+        android:id="@+id/tvlocation"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvhotel"
+        android:layout_toRightOf="@+id/imglocation"
+        android:padding="3dp"
+        android:text="Detail Location"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/imgstar"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/tvlocation"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imghotel"
+        android:src="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imgstar1"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/tvlocation"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imgstar"
+        android:src="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imgstar2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/tvlocation"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imgstar1"
+        android:src="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imgstar3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/tvlocation"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imgstar2"
+        android:src="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imgstar4"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/tvlocation"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imgstar3"
+        android:src="@drawable/ic_star" />
+
+    <TextView
+        android:id="@+id/tvharga"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgstar"
+        android:layout_toRightOf="@+id/imghotel"
+        android:padding="3dp"
+        android:text="Harga"
+        android:textColor="@color/colorGreen"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>

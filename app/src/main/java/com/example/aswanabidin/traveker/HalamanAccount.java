@@ -184,6 +184,16 @@ public class HalamanAccount extends AppCompatActivity {
         startActivity(intent1);
     }
 
+    public void btnImportHotel(View view){
+        Intent intent2 = new Intent(HalamanAccount.this, HalamanImportHotel.class);
+        startActivity(intent2);
+    }
+
+    public void btnImportTours(View view){
+        Intent intent3 = new Intent(HalamanAccount.this, HalamanImportTours.class);
+        startActivity(intent3);
+    }
+
 
     /**
      * BottomNavigation setup

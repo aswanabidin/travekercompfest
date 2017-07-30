@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.aswanabidin.traveker.Adapter.SpinnerAdapter;
 import com.example.aswanabidin.traveker.HalamanHome;
+import com.example.aswanabidin.traveker.HalamanListHotels;
 import com.example.aswanabidin.traveker.Model.ItemAirportModel;
 import com.example.aswanabidin.traveker.R;
 
@@ -28,10 +30,11 @@ public class HalamanHotel extends AppCompatActivity {
 
     private EditText checkIn;
     private EditText checkOut;
-    private Spinner spguests,sprooms;
+    private Spinner spguests, sprooms;
 
     int day, month, year;
-    int dayFinal, monthFinal, yearFinal;
+
+    private Button search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,15 @@ public class HalamanHotel extends AppCompatActivity {
 
         TextView judul = (TextView) toolbar.findViewById(R.id.toolbarTitle);
         judul.setText("Search Hotels");
+
+        search = (Button) findViewById(R.id.btnsearchhotels);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HalamanHotel.this, HalamanListHotels.class);
+                startActivity(intent);
+            }
+        });
 
         checkIn = (EditText) findViewById(R.id.etcheckin);
         checkOut = (EditText) findViewById(R.id.etcheckout);
@@ -83,9 +95,10 @@ public class HalamanHotel extends AppCompatActivity {
                         } else
                             checkIn.setText(tanggal);
                     }
-                },year, month, day);
+                }, year, month, day);
                 mDatePicker.setTitle("Check-in Date");
-                mDatePicker.show();  }
+                mDatePicker.show();
+            }
         });
 
         checkOut.setOnClickListener(new View.OnClickListener() {
@@ -118,9 +131,10 @@ public class HalamanHotel extends AppCompatActivity {
                         } else
                             checkOut.setText(tanggal);
                     }
-                },year, month, day);
+                }, year, month, day);
                 mDatePicker.setTitle("Check-out Date");
-                mDatePicker.show();  }
+                mDatePicker.show();
+            }
         });
 
         //list dialog daftar room
@@ -139,25 +153,25 @@ public class HalamanHotel extends AppCompatActivity {
 
         //list spinner dialog room
         Spinner sp = (Spinner) findViewById(R.id.spinguests);
-        final SpinnerAdapter adapter = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txtspinner,listguest){
+        final SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_layout, R.id.txtspinner, listguest) {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent){
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View itemView = super.getView(position, convertView, parent);
-                if(position == getCount()){
-                    ((TextView)itemView.findViewById(R.id.txtspinner)).setText("");
-                    ((TextView)itemView.findViewById(R.id.txtspinner)).setHint("Guest(s)");
+                if (position == getCount()) {
+                    ((TextView) itemView.findViewById(R.id.txtspinner)).setText("");
+                    ((TextView) itemView.findViewById(R.id.txtspinner)).setHint("Guest(s)");
                 }
                 return itemView;
             }
+
             @Override
-            public int getCount(){
-                return super.getCount()-1;
+            public int getCount() {
+                return super.getCount() - 1;
             }
         };
         sp.setAdapter(adapter);
         sp.setSelection(adapter.getCount());
         sp.setPrompt("Guest(s)");
-
 
 
         //list dialog daftar guest
@@ -177,19 +191,20 @@ public class HalamanHotel extends AppCompatActivity {
 
         //list spinner dialog guest
         Spinner sp1 = (Spinner) findViewById(R.id.spinrooms);
-        final SpinnerAdapter adapter1 = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txtspinner,listroom){
+        final SpinnerAdapter adapter1 = new SpinnerAdapter(this, R.layout.spinner_layout, R.id.txtspinner, listroom) {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent){
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View itemView = super.getView(position, convertView, parent);
-                if(position == getCount()){
-                    ((TextView)itemView.findViewById(R.id.txtspinner)).setText("");
-                    ((TextView)itemView.findViewById(R.id.txtspinner)).setHint("Room(s)");
+                if (position == getCount()) {
+                    ((TextView) itemView.findViewById(R.id.txtspinner)).setText("");
+                    ((TextView) itemView.findViewById(R.id.txtspinner)).setHint("Room(s)");
                 }
                 return itemView;
             }
+
             @Override
-            public int getCount(){
-                return super.getCount()-1;
+            public int getCount() {
+                return super.getCount() - 1;
             }
         };
         sp1.setAdapter(adapter1);
@@ -238,20 +253,21 @@ public class HalamanHotel extends AppCompatActivity {
 
         //list spinner dialog asal
         Spinner sp2 = (Spinner) findViewById(R.id.spinnerdestinationhotel);
-        final SpinnerAdapter adapter2 = new SpinnerAdapter(this,R.layout.spinner_layout,R.id.txtspinner,list){
+        final SpinnerAdapter adapter2 = new SpinnerAdapter(this, R.layout.spinner_layout, R.id.txtspinner, list) {
             //ngeset text hintnya
             @Override
-            public View getView(int position, View convertView, ViewGroup parent){
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View itemView = super.getView(position, convertView, parent);
-                if(position == getCount()){
-                    ((TextView)itemView.findViewById(R.id.txtspinner)).setText("");
-                    ((TextView)itemView.findViewById(R.id.txtspinner)).setHint("Destination"); //hint display
+                if (position == getCount()) {
+                    ((TextView) itemView.findViewById(R.id.txtspinner)).setText("");
+                    ((TextView) itemView.findViewById(R.id.txtspinner)).setHint("Destination"); //hint display
                 }
                 return itemView;
             }
+
             @Override
-            public int getCount(){
-                return super.getCount()-1;
+            public int getCount() {
+                return super.getCount() - 1;
             }
         };
         sp2.setAdapter(adapter2);
@@ -278,7 +294,7 @@ public class HalamanHotel extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = new Intent(getBaseContext(), HalamanHome.class);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         startActivity(intent);
