@@ -12,13 +12,16 @@ public class ListHotelsModel implements Parcelable {
     private String nama;
     private String location;
     private String harga;
+    private String description;
     private String url;
 
-    public ListHotelsModel(String nama, String location, String harga, String url) {
+    public ListHotelsModel(String nama, String location, String harga, String description, String url) {
         this.nama = nama;
         this.location = location;
         this.harga = harga;
+        this.description = description;
         this.url = url;
+
     }
 
     public ListHotelsModel(){
@@ -29,7 +32,9 @@ public class ListHotelsModel implements Parcelable {
         nama = in.readString();
         location = in.readString();
         harga = in.readString();
+        description = in.readString();
         url = in.readString();
+
     }
 
     public static final Creator<ListHotelsModel> CREATOR = new Creator<ListHotelsModel>() {
@@ -78,6 +83,15 @@ public class ListHotelsModel implements Parcelable {
         this.url = url;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -88,6 +102,7 @@ public class ListHotelsModel implements Parcelable {
         parcel.writeString(nama);
         parcel.writeString(location);
         parcel.writeString(harga);
+        parcel.writeString(description);
         parcel.writeString(url);
     }
 }

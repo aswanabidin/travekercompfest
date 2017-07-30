@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.aswanabidin.traveker.HalamanDetailHotel;
 import com.example.aswanabidin.traveker.Model.ListHotelsModel;
 import com.example.aswanabidin.traveker.R;
 import com.google.firebase.storage.StorageReference;
@@ -51,17 +52,19 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder
     public void onBindViewHolder(HotelAdapter.MyViewHolder holder, int position) {
 
         final ListHotelsModel listHotelsModel = listHotelsModels.get(position);
+
         holder.nama.setText(listHotelsModel.getNama());
         holder.location.setText(listHotelsModel.getLocation());
         holder.harga.setText(listHotelsModel.getHarga());
+        holder.description.setText(listHotelsModel.getDescription());
         Picasso.with(context).load(listHotelsModel.getUrl()).fit().centerCrop().into(holder.imghotel);
-
         holder.itemHotels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, HalamanBookingHotels.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, HalamanDetailHotel.class);
+                intent.putExtra("hotels",listHotelsModel);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 
@@ -69,22 +72,25 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return listHotelsModels.size();
+        return (listHotelsModels == null) ? 0 : listHotelsModels.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView nama, location, harga;
+        private TextView nama, location, harga, description;
         private ImageView imghotel;
         private View itemHotels;
         ArrayList<ListHotelsModel> listHotelsModels = new ArrayList<ListHotelsModel>();
         Context context;
 
         public MyViewHolder(View itemView) {
+
             super(itemView);
-            nama = (TextView) itemView.findViewById(R.id.tvhotel);
+
+            nama = (TextView) itemView.findViewById(R.id.tvhotels);
             location = (TextView) itemView.findViewById(R.id.tvlocation);
             harga = (TextView) itemView.findViewById(R.id.tvharga);
+            description = (TextView) itemView.findViewById(R.id.tvdescription);
             imghotel = (ImageView) itemView.findViewById(R.id.imghotel);
             itemHotels = (View) itemView.findViewById(R.id.viewHotels);
         }

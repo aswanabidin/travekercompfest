@@ -3,6 +3,7 @@ package com.example.aswanabidin.traveker;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.TestLooperManager;
@@ -89,8 +90,7 @@ public class HalamanAccount extends AppCompatActivity {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    progressDialog.setMessage("Login..");
-                    progressDialog.show();
+                    progressDialog.setMessage("Login...");
 
                     String email = txtEmail.getText().toString().trim();
                     String pass = txtPass.getText().toString().trim();
@@ -105,18 +105,22 @@ public class HalamanAccount extends AppCompatActivity {
                         return;
                     }
 
+                    progressDialog.show();
+
                     auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (!task.isSuccessful()) {
-                                progressDialog.dismiss();
                                 Toast.makeText(HalamanAccount.this, "Login Failed!", Toast.LENGTH_SHORT).show();
                             } else {
                                 //pindahin ke halaman main
                                 Intent intent = new Intent(HalamanAccount.this, HalamanProfile.class);
                                 startActivity(intent);
+
                             }
+                            progressDialog.dismiss();
+
                         }
                     });
                 }
@@ -132,45 +136,79 @@ public class HalamanAccount extends AppCompatActivity {
 
             setupBottomNavigationView();
 
-            String[] opt = {"Logout","Setting"};
+//            String[] opt = {"Logout","Setting"};
 
             //set email
             TextView email = (TextView) findViewById(R.id.txtEmailProfile);
             email.setText(isLogin.getEmail());
-
-            //set listView
-            ListView listView = (ListView) findViewById(R.id.listOption2);
-            ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_listview,opt);
-
-            listView.setAdapter(adapter);
+//
+//            //set listView
+//            ListView listView = (ListView) findViewById(R.id.listOption2);
+//            ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_listview,opt);
+//
+//            listView.setAdapter(adapter);
 
             progressDialog = new ProgressDialog(this);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+            progressDialog.setMessage("Logout...");
+            Button logout = (Button) findViewById(R.id.btnlogout);
+            logout.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
+                public void onClick(View view) {
+                    auth.signOut();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(HalamanAccount.this);
+                    builder.setTitle("Log Out")
+                            .setMessage("Are you sure?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    progressDialog.show();
+                                    Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
+                                    startActivity(intent);
+                                    finish();
 
-                    int itemPosition = position;
-
-                   if(itemPosition == 0){
-                       //jika menekan logout di posisi ke 0
-                       progressDialog.setMessage("Logout..");
-                       progressDialog.show();
-
-                       auth.signOut();
-
-                       progressDialog.dismiss();
-                       Toast.makeText(HalamanAccount.this, "Logout success!", Toast.LENGTH_SHORT).show();
-
-                       Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
-                       startActivity(intent);
-                   }else if(itemPosition == 1){
-                       //jika menekan logout di posisi ke 1
-                   }
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            });
+                    progressDialog.dismiss();
+                    AlertDialog alert = builder.create();
+                    alert.show();
+//                    progressDialog.show();
+//                    Toast.makeText(HalamanAccount.this, "Logout success!", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
+//                    startActivity(intent);
+//                    progressDialog.show();
                 }
             });
+//
+//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view,
+//                                        int position, long id) {
+//                    int itemPosition = position;
+//                   if(itemPosition == 0){
+//                       //jika menekan logout di posisi ke 0
+//                       progressDialog.setMessage("Logout..");
+//                       progressDialog.show();
+//
+//                       auth.signOut();
+//
+//                       progressDialog.dismiss();
+//                       Toast.makeText(HalamanAccount.this, "Logout success!", Toast.LENGTH_SHORT).show();
+//
+//                       Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
+//                       startActivity(intent);
+//                   }else if(itemPosition == 1){
+//                       //jika menekan logout di posisi ke 1
+//                   }
+//                }
+//            });
         }
     }
 
@@ -180,19 +218,19 @@ public class HalamanAccount extends AppCompatActivity {
     }
 
     public void btnImport(View view) {
-        Intent intent1 = new Intent(HalamanAccount.this, HalamanImportSchedule.class);
+        Intent intent1 = new Intent(HalamanAccount.this, HalamanImportData.class);
         startActivity(intent1);
     }
 
-    public void btnImportHotel(View view){
-        Intent intent2 = new Intent(HalamanAccount.this, HalamanImportHotel.class);
-        startActivity(intent2);
-    }
-
-    public void btnImportTours(View view){
-        Intent intent3 = new Intent(HalamanAccount.this, HalamanImportTours.class);
-        startActivity(intent3);
-    }
+//    public void btnImportHotel(View view){
+//        Intent intent2 = new Intent(HalamanAccount.this, HalamanImportHotel.class);
+//        startActivity(intent2);
+//    }
+//
+//    public void btnImportTours(View view){
+//        Intent intent3 = new Intent(HalamanAccount.this, HalamanImportTours.class);
+//        startActivity(intent3);
+//    }
 
 
     /**

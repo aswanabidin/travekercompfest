@@ -89,10 +89,12 @@ public class HalamanListHotels extends AppCompatActivity {
                     String nama = value.getNama();
                     String location = value.getLocation();
                     String harga = value.getHarga();
+                    String description = value.getDescription();
                     String url = value.getUrl();
                     hotels.setNama(nama);
                     hotels.setLocation(location);
                     hotels.setHarga(harga);
+                    hotels.setDescription(description);
                     hotels.setUrl(url);
                     mAdapter.addData(hotels);
                 }

@@ -22,7 +22,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/tvhotel"
+        android:id="@+id/tvhotels"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -36,7 +36,7 @@
         android:id="@+id/imglocation"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_below="@+id/tvhotel"
+        android:layout_below="@+id/tvhotels"
         android:layout_marginRight="2dp"
         android:layout_marginTop="4dp"
         android:layout_toRightOf="@id/imghotel"
@@ -46,7 +46,7 @@
         android:id="@+id/tvlocation"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvhotel"
+        android:layout_below="@+id/tvhotels"
         android:layout_toRightOf="@+id/imglocation"
         android:padding="3dp"
         android:text="Detail Location"
@@ -107,6 +107,18 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgstar"
+        android:layout_toRightOf="@+id/imghotel"
+        android:padding="3dp"
+        android:text="Harga"
+        android:textColor="@color/colorGreen"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvdescription"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvharga"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/imghotel"
         android:padding="3dp"
         android:text="Harga"

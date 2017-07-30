@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:minHeight="@dimen/abc_action_bar_default_height_material"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left">
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:text="Origin"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_below="@+id/location"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iviteneray"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:id="@+id/tvhotels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Nama Hotel"
+                android:textColor="@color/hitam"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imglocation"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tvhotels"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/tvlocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvhotels"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/imglocation"
+                android:text="Location" />
+
+            <ImageView
+                android:id="@+id/imgstar"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tvlocation"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
+                android:id="@+id/imgstar1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tvlocation"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/imgstar"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
+                android:id="@+id/imgstar2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tvlocation"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/imgstar1"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
+                android:id="@+id/imgstar3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tvlocation"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/imgstar2"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
+                android:id="@+id/imgstar4"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tvlocation"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/imgstar3"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
+                android:id="@+id/imghotel"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/imgstar4"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/mainfasilitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghotel"
+                android:text="Main Facilities"
+                android:textColor="@color/hitam"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imgac"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/mainfasilitas"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_ac" />
+
+            <TextView
+                android:id="@+id/tvac"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgac"
+                android:text="Air Conditioner"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imgparking"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/mainfasilitas"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/imgac"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_parking" />
+
+            <TextView
+                android:id="@+id/tvparking"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgac"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/tvac"
+                android:text="Parking"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imgpool"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/mainfasilitas"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/imgparking"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_pool" />
+
+            <TextView
+                android:id="@+id/tvpool"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgac"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/tvparking"
+                android:text="Swimming Pool"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imgspoon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/mainfasilitas"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/imgpool"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_spoon" />
+
+            <TextView
+                android:id="@+id/tvspoon"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgac"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/tvpool"
+                android:text="Restaurant"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imgwifi"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/mainfasilitas"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/imgspoon"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_wifi" />
+
+            <TextView
+                android:id="@+id/tvwifi"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgac"
+                android:layout_marginLeft="33dp"
+                android:layout_toRightOf="@+id/tvspoon"
+                android:text="Wifi"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/hoteldescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvac"
+                android:layout_marginTop="10dp"
+                android:text="Hotel Description"
+                android:textColor="@color/hitam"
+                android:textSize="16sp" />
+
+
+            <com.uncopt.android.widget.text.justify.JustifiedTextView
+                android:id="@+id/tvdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hoteldescription"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Description"
+                android:textAlignment="gravity"
+                android:textColor="@color/hitam"
+                android:textSize="13sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/tvdescription"
+                android:background="@drawable/btn_rounded_corners"
+                android:text="Select Room"
+                android:textAllCaps="false"
+                android:textColor="@color/putih" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

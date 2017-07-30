@@ -50,7 +50,7 @@ public class HalamanImportHotel extends AppCompatActivity implements View.OnClic
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
     private Button btnsubmit, lampirfoto;
-    private EditText hotel, location, harga;
+    private EditText hotel, location, harga, description;
     private String userChoosenTask;
     private File files;
     private Uri foto;
@@ -92,6 +92,7 @@ public class HalamanImportHotel extends AppCompatActivity implements View.OnClic
         hotel = (EditText) findViewById(R.id.etHotel);
         location = (EditText) findViewById(R.id.etLocation);
         harga = (EditText) findViewById(R.id.etHarga);
+        description = (EditText) findViewById(R.id.etDescription);
 
         progressDialog = new ProgressDialog(this);
     }
@@ -118,7 +119,7 @@ public class HalamanImportHotel extends AppCompatActivity implements View.OnClic
                             startActivity(new Intent(getApplicationContext(), HalamanAccount.class));
 
                             ListHotelsModel listHotelsModel = new ListHotelsModel(hotel.getText().toString(), location.getText().toString(),
-                                    harga.getText().toString(), taskSnapshot.getDownloadUrl().toString());
+                                    harga.getText().toString(), description.getText().toString(), taskSnapshot.getDownloadUrl().toString());
 
                             //save image info in to firebase database
                             String uploadId = mDatabase.push().getKey();

@@ -109,11 +109,32 @@
                     android:padding="15dp"
                     android:textSize="13dp" />
 
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etHarga"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/stroke_rounded_multiline"
+                    android:capitalize="sentences"
+                    android:fontFamily="sans-serif"
+                    android:gravity="top|left"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:scrollHorizontally="false"
+                    android:textColor="@color/hitam"
+                    android:textSize="14sp" />
+
                 <Button
                     android:id="@+id/btnfotoschedule"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/etHarga"
+                    android:layout_below="@+id/etDescription"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/stroke_rounded_daftar"
                     android:clickable="true"
@@ -126,7 +147,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_below="@+id/etHarga"
+                    android:layout_below="@+id/etDescription"
                     android:layout_marginLeft="90dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_addphoto" />

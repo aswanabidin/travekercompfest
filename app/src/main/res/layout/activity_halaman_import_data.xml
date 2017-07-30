@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aswanabidin.traveker.HalamanImportData">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <Button
+            android:id="@+id/btnimporthotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="Import Hotel"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnimporttours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnimporthotel"
+            android:text="Import Tours"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnimport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnimporttours"
+            android:text="Import Flights"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnimdetailhotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnimport"
+            android:text="Import Detail Hotel"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnimdetailtours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnimdetailhotel"
+            android:text="Import Tours"
+            android:textAllCaps="false" />
+
+
+    </RelativeLayout>
+</RelativeLayout>
