@@ -45,85 +45,16 @@ public class HalamanAccount extends AppCompatActivity {
     private EditText txtPass;
     private Button btnLogin;
     private FirebaseAuth auth;
+
     private ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         auth = FirebaseAuth.getInstance();
-        FirebaseUser isLogin = auth.getCurrentUser();
+        final FirebaseUser isLogin = auth.getCurrentUser();
 
-        if(isLogin == null) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_halaman_account);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-
-            Log.d(TAG, "onCreate: started.");
-
-            setupBottomNavigationView();
-
-            Button btnRegister = (Button) findViewById(R.id.btndaftar);
-
-            btnRegister.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    btnRegister(view);
-                }
-            });
-
-            Button btnImport = (Button) findViewById(R.id.btnimport);
-            btnImport.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    btnImport(view);
-                }
-            });
-
-            txtEmail = (EditText) findViewById(R.id.etemaillogin);
-            txtPass = (EditText) findViewById(R.id.etpass);
-            btnLogin = (Button) findViewById(R.id.btnlogin);
-
-
-            progressDialog = new ProgressDialog(this);
-
-            btnLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    progressDialog.setMessage("Login..");
-                    progressDialog.show();
-
-                    String email = txtEmail.getText().toString().trim();
-                    String pass = txtPass.getText().toString().trim();
-
-                    if (TextUtils.isEmpty(email)) {
-                        Toast.makeText(HalamanAccount.this, "Enter email address!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    if (TextUtils.isEmpty(pass)) {
-                        Toast.makeText(HalamanAccount.this, "Enter password!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-                            if (!task.isSuccessful()) {
-                                progressDialog.dismiss();
-                                Toast.makeText(HalamanAccount.this, "Login Failed!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                //pindahin ke halaman main
-                                Intent intent = new Intent(HalamanAccount.this, HalamanProfile.class);
-                                startActivity(intent);
-                            }
-                        }
-                    });
-                }
-            });
-
-            return;
-        }else{
+        if (!(isLogin == null) && (isLogin.isEmailVerified())) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_halaman_account_login);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -154,29 +85,121 @@ public class HalamanAccount extends AppCompatActivity {
 
                     int itemPosition = position;
 
-                   if(itemPosition == 0){
-                       //jika menekan logout di posisi ke 0
-                       progressDialog.setMessage("Logout..");
-                       progressDialog.show();
+                    if(itemPosition == 0){
+                        //jika menekan logout di posisi ke 0
+                        progressDialog.setMessage("Logout..");
+                        progressDialog.show();
 
-                       auth.signOut();
+                        auth.signOut();
 
-                       progressDialog.dismiss();
-                       Toast.makeText(HalamanAccount.this, "Logout success!", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        Toast.makeText(HalamanAccount.this, "Logout success!", Toast.LENGTH_SHORT).show();
 
-                       Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
-                       startActivity(intent);
-                   }else if(itemPosition == 1){
-                       //jika menekan logout di posisi ke 1
-                   }
+                        Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
+                        startActivity(intent);
+                    }else if(itemPosition == 1){
+                        //jika menekan logout di posisi ke 1
+                    }
                 }
             });
+        }else{
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_halaman_account);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+            Log.d(TAG, "onCreate: started.");
+
+            setupBottomNavigationView();
+
+            Button btnRegister = (Button) findViewById(R.id.btndaftar);
+            TextView txtForgot = (TextView) findViewById(R.id.txtForgot);
+
+            btnRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnRegister(view);
+                }
+            });
+
+            txtForgot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnForgotPass(view);
+                }
+            });
+
+            Button btnImport = (Button) findViewById(R.id.btnimport);
+            btnImport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnImport(view);
+                }
+            });
+
+            txtEmail = (EditText) findViewById(R.id.etemaillogin);
+            txtPass = (EditText) findViewById(R.id.etpass);
+            btnLogin = (Button) findViewById(R.id.btnlogin);
+
+
+            progressDialog = new ProgressDialog(this);
+
+            btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    progressDialog.setMessage("Login..");
+                    progressDialog.show();
+
+                    String email = txtEmail.getText().toString().trim();
+                    String pass = txtPass.getText().toString().trim();
+
+                    if (TextUtils.isEmpty(email)) {
+                        progressDialog.dismiss();
+                        Toast.makeText(HalamanAccount.this, "Enter email address!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (TextUtils.isEmpty(pass)) {
+                        progressDialog.dismiss();
+                        Toast.makeText(HalamanAccount.this, "Enter password!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (!task.isSuccessful()) {
+                                progressDialog.dismiss();
+                                Toast.makeText(HalamanAccount.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                //pindahin ke halaman main
+                                if(!isLogin.isEmailVerified()){
+                                    progressDialog.dismiss();
+                                    Toast.makeText(HalamanAccount.this, "\n" +
+                                            "Email has not been verified", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }else{
+                                    Intent intent = new Intent(HalamanAccount.this, HalamanProfile.class);
+                                    startActivity(intent);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
+            return;
         }
     }
 
     public void btnRegister(View view) {
         Intent intent = new Intent(HalamanAccount.this, HalamanDaftar.class);
         startActivity(intent);
+    }
+
+    public void btnForgotPass(View view){
+        Intent intent0 = new Intent(HalamanAccount.this, HalamanLupaPassword.class);
+        startActivity(intent0);
     }
 
     public void btnImport(View view) {
