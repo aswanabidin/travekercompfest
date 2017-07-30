@@ -84,6 +84,10 @@
             android:name=".HalamanImportTours"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".HalamanLupaPassword"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

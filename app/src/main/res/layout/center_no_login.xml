@@ -65,7 +65,6 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:linksClickable="true"
                 android:text="Forgot Password?"
                 android:textColor="@color/colorGreen"
                 android:textSize="13dp" />
@@ -100,17 +99,17 @@
                 android:textColor="@color/colorGreen"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnimport"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/btndaftar"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_rounded_corners"
-                android:onClick="btnImport"
-                android:text="Import All"
-                android:textAllCaps="false"
-                android:textColor="@color/putih" />
+            <!--<Button-->
+            <!--android:id="@+id/btnimport"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_below="@id/btndaftar"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:background="@drawable/btn_rounded_corners"-->
+            <!--android:onClick="btnImport"-->
+            <!--android:text="Import All"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/putih" />-->
 
 
         </RelativeLayout>

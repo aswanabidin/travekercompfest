@@ -71,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorGrey"
                     android:clickable="true"
+                    android:onClick="btnLogout"
                     android:foreground="?attr/selectableItemBackground"
                     android:text="Log Out"
                     android:textAllCaps="false"

@@ -91,7 +91,7 @@ public class HalamanHotel extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         if (tanggalpilih < System.currentTimeMillis()) {
-                            Toast.makeText(HalamanHotel.this, "Deadline Harus Melebihi Tanggal Sekarang", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HalamanHotel.this, "No Hotel", Toast.LENGTH_SHORT).show();
                         } else
                             checkIn.setText(tanggal);
                     }

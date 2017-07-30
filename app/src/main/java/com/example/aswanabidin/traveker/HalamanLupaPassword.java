@@ -1,5 +1,6 @@
 package com.example.aswanabidin.traveker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HalamanLupaPassword extends AppCompatActivity {
     private FirebaseAuth auth;
-    private ProgressBar progressDialog;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class HalamanLupaPassword extends AppCompatActivity {
         Button btnSubmit = (Button) findViewById(R.id.btnLupaPass);
         final EditText txtEmail = (EditText) findViewById(R.id.etEmailLP);
 
-        progressDialog = new ProgressBar(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Reset Password...");
 
         auth = FirebaseAuth.getInstance();
 
@@ -53,7 +55,7 @@ public class HalamanLupaPassword extends AppCompatActivity {
                     return;
                 }
 
-                progressDialog.setVisibility(View.VISIBLE);
+                progressDialog.show();
                 auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -62,9 +64,7 @@ public class HalamanLupaPassword extends AppCompatActivity {
                         } else {
                             Toast.makeText(HalamanLupaPassword.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                         }
-
-                        progressDialog.setVisibility(View.GONE);
-
+                        progressDialog.dismiss();
                         Intent intent = new Intent(HalamanLupaPassword.this, HalamanAccount.class);
                         startActivity(intent);
                     }
