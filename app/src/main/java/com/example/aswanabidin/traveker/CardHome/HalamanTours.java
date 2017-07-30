@@ -7,17 +7,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.aswanabidin.traveker.Adapter.SpinnerAdapter;
 import com.example.aswanabidin.traveker.HalamanHome;
+import com.example.aswanabidin.traveker.HalamanListHotels;
+import com.example.aswanabidin.traveker.HalamanListTours;
 import com.example.aswanabidin.traveker.Model.ItemAirportModel;
 import com.example.aswanabidin.traveker.R;
 
 import java.util.ArrayList;
 
 public class HalamanTours extends AppCompatActivity {
+
+    private Button search;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,15 @@ public class HalamanTours extends AppCompatActivity {
 
         TextView judul = (TextView) toolbar.findViewById(R.id.toolbarTitle);
         judul.setText("Search Tours");
+
+        search = (Button) findViewById(R.id.btnsearchtours);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HalamanTours.this, HalamanListTours.class);
+                startActivity(intent);
+            }
+        });
 
         //list dialog daftar destination tourplace
         ArrayList<ItemAirportModel> listdest = new ArrayList<>();

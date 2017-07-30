@@ -103,12 +103,37 @@
             <Button
                 android:id="@+id/btnimport"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:layout_below="@id/btndaftar"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btn_rounded_corners"
                 android:onClick="btnImport"
-                android:text="Import"
+                android:text="Import Flight"
+                android:textAllCaps="false"
+                android:textColor="@color/putih" />
+
+            <Button
+                android:id="@+id/btnimporthotel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnimport"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_rounded_corners"
+                android:onClick="btnImportHotel"
+                android:text="Import Hotel"
+                android:textAllCaps="false"
+                android:textColor="@color/putih" />
+
+            <Button
+                android:id="@+id/btnimporttours"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnimporthotel"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_rounded_corners"
+                android:onClick="btnImportTours"
+                android:text="Import Tours"
+                android:textAllCaps="false"
                 android:textColor="@color/putih" />
 
         </RelativeLayout>
