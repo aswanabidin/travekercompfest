@@ -126,8 +126,6 @@
                     android:id="@+id/etStorydescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/etStorytitle"
-                    android:layout_marginBottom="15dp"
                     android:background="@drawable/stroke_rounded_multiline"
                     android:capitalize="sentences"
                     android:fontFamily="sans-serif"
@@ -141,7 +139,9 @@
                     android:paddingTop="10dp"
                     android:scrollHorizontally="false"
                     android:textColor="@color/hitam"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:layout_below="@+id/etStorytitle"
+                    android:layout_alignParentStart="true" />
 
                 <Button
                     android:id="@+id/btnAddfoto"

@@ -192,9 +192,8 @@ public class HalamanAccount extends AppCompatActivity implements View.OnClickLis
 //                        HalamanAccount.this.finish();
 
                         progressDialog.show();
-                        Intent intent = new Intent(HalamanAccount.this, HalamanDaftar.class);
+                        Intent intent = new Intent(HalamanAccount.this, HalamanHome.class);
                         startActivity(intent);
-                        finish();
                         Toast.makeText(HalamanAccount.this, "Logout Succsess", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
 

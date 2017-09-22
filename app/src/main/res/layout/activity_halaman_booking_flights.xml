@@ -32,7 +32,7 @@
                     android:id="@+id/toolbarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="Coba"
                     android:textColor="@android:color/white"
                     android:textSize="17sp"
                     android:textStyle="bold" />

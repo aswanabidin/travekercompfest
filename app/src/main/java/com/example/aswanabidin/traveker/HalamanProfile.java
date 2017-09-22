@@ -28,7 +28,7 @@ public class HalamanProfile extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_halaman_notifications);
+        setContentView(R.layout.activity_halaman_profile);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
         Log.d(TAG, "onCreate: started.");
