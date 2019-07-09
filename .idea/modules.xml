@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/traveker.iml" filepath="$PROJECT_DIR$/traveker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/travekercompfest.iml" filepath="$PROJECT_DIR$/travekercompfest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/travekercompfest.iml" filepath="$PROJECT_DIR$/.idea/travekercompfest.iml" />
     </modules>
   </component>
